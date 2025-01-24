@@ -1,4 +1,4 @@
-# Go Workshop Conference 2025 Website
+# Go Workshop Conference 2025 IN KOBE Website
 
 ## 開発環境のセットアップ
 
