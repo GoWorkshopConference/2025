@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { withBase } from "../utils/withBase";
 ---
 
 <!doctype html>
@@ -11,6 +12,20 @@ import "../styles/global.css";
     <title>Go Workshop Conference 2025 IN KOBE</title>
   </head>
   <body>
+    <nav>
+      <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
+        <div class="w-full md:block md:w-auto">
+          <ul class="flex gap-4 p-4 mt-4 text-xl">
+            <li>
+              <a href={withBase("")} aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href={withBase("staff")}>Staff</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <slot />
   </body>
 </html>
