@@ -16,7 +16,7 @@ importers:
         version: 4.0.3(vite@6.0.11(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))
       astro:
         specifier: ^5.1.1
-        version: 5.2.4(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.2)(typescript@5.7.3)(yaml@2.7.0)
+        version: 5.2.5(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.2)(typescript@5.7.3)(yaml@2.7.0)
       tailwindcss:
         specifier: ^4.0.0
         version: 4.0.3
@@ -691,8 +691,8 @@ packages:
   array-iterate@2.0.1:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
 
-  astro@5.2.4:
-    resolution: {integrity: sha512-zTWiOyRIy+cKzdjG4mvb5gJ8/Gy0z1s9nAZVirlzpYXd8j5LORlKPywEalNU+Q+nssG2QadBTxXCmAjhKYB93Q==}
+  astro@5.2.5:
+    resolution: {integrity: sha512-AYXyYkc+c5xbKTm48FyQA91y81nXyNPAaoyafR0LUugE4lAwuvIUcXDBfMzmbuP1lGRvsE33G2oypv6gbGaPFg==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1529,11 +1529,6 @@ packages:
 
   sass-formatter@0.7.9:
     resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
-
-  semver@7.7.0:
-    resolution: {integrity: sha512-DrfFnPzblFmNrIZzg5RzHegbiRWg7KMR7btwi2yjHwx06zsUbO5g613sVwEV7FTwmzJu+Io0lJe2GJ3LxqpvBQ==}
-    engines: {node: '>=10'}
-    hasBin: true
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
@@ -2562,7 +2557,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.2.4(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.2)(typescript@5.7.3)(yaml@2.7.0):
+  astro@5.2.5(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.2)(typescript@5.7.3)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.5.1
@@ -3731,8 +3726,6 @@ snapshots:
     dependencies:
       suf-log: 2.5.3
 
-  semver@7.7.0: {}
-
   semver@7.7.1: {}
 
   sharp@0.33.5:
@@ -3846,7 +3839,7 @@ snapshots:
 
   typescript-auto-import-cache@0.3.5:
     dependencies:
-      semver: 7.7.0
+      semver: 7.7.1
 
   typescript@5.7.3: {}
 
@@ -4001,7 +3994,7 @@ snapshots:
   volar-service-typescript@0.0.62(@volar/language-service@2.4.10):
     dependencies:
       path-browserify: 1.0.1
-      semver: 7.7.0
+      semver: 7.7.1
       typescript-auto-import-cache: 0.3.5
       vscode-languageserver-textdocument: 1.0.12
       vscode-nls: 5.2.0
