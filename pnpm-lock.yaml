@@ -13,10 +13,10 @@ importers:
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.2)(typescript@5.8.2)
       '@tailwindcss/vite':
         specifier: ^4.0.0
-        version: 4.0.9(vite@6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))
+        version: 4.0.9(vite@6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))
       astro:
         specifier: ^5.1.1
-        version: 5.4.1(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0)
+        version: 5.4.1(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0)
       tailwindcss:
         specifier: ^4.0.0
         version: 4.0.9
@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: ^22.13.0
-        version: 22.13.7
+        version: 22.13.8
       prettier:
         specifier: ^3.4.2
         version: 3.5.2
@@ -615,8 +615,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@22.13.7':
-    resolution: {integrity: sha512-oU2q+BsQldB9lYxHNp/5aZO+/Bs0Usa74Abo9mAKulz4ahQyXRHK6UVKYIN8KSC8HXwhWSi7b49JnX+txuac0w==}
+  '@types/node@22.13.8':
+    resolution: {integrity: sha512-G3EfaZS+iOGYWLLRCEAXdWK9my08oHNZ+FHluRiggIYJPOXzhOiDgpVCUHaUvyIC5/fj7C/p637jdzC666AOKQ==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -2429,13 +2429,13 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.9
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.9
 
-  '@tailwindcss/vite@4.0.9(vite@6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))':
+  '@tailwindcss/vite@4.0.9(vite@6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))':
     dependencies:
       '@tailwindcss/node': 4.0.9
       '@tailwindcss/oxide': 4.0.9
       lightningcss: 1.29.1
       tailwindcss: 4.0.9
-      vite: 6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
+      vite: 6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
 
   '@types/cookie@0.6.0': {}
 
@@ -2459,7 +2459,7 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@22.13.7':
+  '@types/node@22.13.8':
     dependencies:
       undici-types: 6.20.0
 
@@ -2555,7 +2555,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.4.1(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0):
+  astro@5.4.1(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.34.8)(typescript@5.8.2)(yaml@2.7.0):
     dependencies:
       '@astrojs/compiler': 2.10.4
       '@astrojs/internal-helpers': 0.6.0
@@ -2607,8 +2607,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.15.0
       vfile: 6.0.3
-      vite: 6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
-      vitefu: 1.0.6(vite@6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))
+      vite: 6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
+      vitefu: 1.0.6(vite@6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))
       which-pm: 3.0.1
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
@@ -3915,21 +3915,21 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite@6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0):
+  vite@6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0):
     dependencies:
       esbuild: 0.25.0
       postcss: 8.5.3
       rollup: 4.34.8
     optionalDependencies:
-      '@types/node': 22.13.7
+      '@types/node': 22.13.8
       fsevents: 2.3.3
       jiti: 2.4.2
       lightningcss: 1.29.1
       yaml: 2.7.0
 
-  vitefu@1.0.6(vite@6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)):
+  vitefu@1.0.6(vite@6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)):
     optionalDependencies:
-      vite: 6.2.0(@types/node@22.13.7)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
+      vite: 6.2.0(@types/node@22.13.8)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)
 
   volar-service-css@0.0.62(@volar/language-service@2.4.10):
     dependencies:
