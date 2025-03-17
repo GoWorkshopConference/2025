@@ -10,7 +10,7 @@
     "astro": "astro",
     "format": "prettier --write ."
   },
-  "packageManager": "pnpm@10.6.3",
+  "packageManager": "pnpm@10.6.4",
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@tailwindcss/vite": "^4.0.0",
