@@ -9,10 +9,6 @@ import Layout from "../layouts/Layout.astro";
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap");
 
-    .header {
-      background: linear-gradient(135deg, #5a91c7, #6c63b5, #8a4fae, #c7438d);
-    }
-
     .header h1 {
       font-family: "Work Sans", sans-serif;
       font-optical-sizing: auto;
@@ -23,7 +19,7 @@ import Layout from "../layouts/Layout.astro";
   <div class="bg-white min-h-screen flex flex-col">
     <main class="flex-grow md:mx-auto md:space-y-8 space-y-4">
       <header
-        class="header md:px-32 md:py-16 md:mt-8 py-2 text-white flex items-center justify-center"
+        class="header md:px-32 md:py-16 md:mt-8 py-2 flex items-center justify-center"
       >
         <h1>
           <span class="md:block md:text-9xl text-lg inline-block">
@@ -44,16 +40,16 @@ import Layout from "../layouts/Layout.astro";
       </section>
       <section class="flex flex-col items-center mb-8 p-4 gap-8">
         <dl class="text-center">
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">
+          <dt class="mb-2 text-xl text-stone-600 font-semibold">
             どんなイベント？
           </dt>
           <dd class="mb-8 text-lg max-w-2xl">
             Go Workshop
             Conferenceは、みんなで手を動かしながら交流するワークショップを中心としたGo言語のイベントです。初心者から上級者まで、Go言語に関心のあるすべての方を対象としています。
           </dd>
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日</dt>
+          <dt class="mb-2 text-xl text-stone-600 font-semibold">開催日</dt>
           <dd class="mb-8 text-lg">2025/12/13（土）</dd>
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">会場</dt>
+          <dt class="mb-2 text-xl text-stone-600 font-semibold">会場</dt>
           <dd class="text-lg">
             <a href="https://kiito.jp/access/" target="_blank">
               デザイン・クリエイティブセンター神戸(KIITO)
