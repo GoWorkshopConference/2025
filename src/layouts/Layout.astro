@@ -20,20 +20,26 @@ const ogpImageURL = new URL(withBase("ogp.png"), Astro.url.origin);
     <meta property="og:image" content={ogpImageURL} />
   </head>
   <body>
-    <nav>
-      <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
-        <div class="w-full md:block md:w-auto">
-          <ul class="flex gap-4 p-4 mt-4 text-xl">
-            <li>
-              <a href={withBase()} aria-current="page">Home</a>
-            </li>
-            <li>
-              <a href={withBase("staff")}>Staff</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    {
+      Astro.url.pathname.includes("/staff") && (
+        <nav>
+          <div class="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
+            <div class="w-full md:block md:w-auto">
+              <ul class="flex gap-4 p-4 mt-4 text-xl">
+                <li>
+                  <a href={withBase()} aria-current="page">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href={withBase("staff")}>Staff</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      )
+    }
     <slot />
   </body>
 </html>
