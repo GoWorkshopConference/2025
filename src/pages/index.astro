@@ -7,39 +7,40 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap");
-
-    .header {
-      background: linear-gradient(135deg, #5a91c7, #6c63b5, #8a4fae, #c7438d);
-    }
+    @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
     .header h1 {
       font-family: "Work Sans", sans-serif;
       font-optical-sizing: auto;
       font-style: normal;
+      font-weight: 100;
+    }
+
+    .header h1 .subtitle {
+      font-weight: 150;
     }
   </style>
 
   <div class="bg-white min-h-screen flex flex-col">
     <main class="flex-grow md:mx-auto md:space-y-8 space-y-4">
       <header
-        class="header md:px-32 md:py-16 md:mt-8 py-2 text-white flex items-center justify-center"
+        class="header md:px-32 md:pt-16 md:mt-8 py-2 text-black flex items-center justify-center"
       >
-        <h1>
-          <span class="md:block md:text-9xl text-lg inline-block">
-            Go Workshop
-          </span>
-          <span class="md:block md:text-9xl text-lg inline-block">
-            Conference
+        <h1 class="text-center">
+          <span>
+            <span class="md:block md:text-9xl text-lg inline-block">
+              <span class="inline-block">Go Workshop</span>
+              <span class="inline-block">Conference</span>
+            </span>
           </span>
           <span
-            class="md:block md:text-6xl md:leading-relaxed text-lg inline-block"
+            class="md:block md:text-6xl md:leading-relaxed text-lg inline-block subtitle"
           >
             2025 IN KOBE
           </span>
         </h1>
       </header>
-      <section class="flex justify-center p-4 md:text-lg">
+      <section class="flex justify-center md:text-lg">
         <div class="text-center max-w-2xl"></div>
       </section>
       <section class="flex flex-col items-center mb-8 p-4 gap-8">
