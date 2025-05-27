@@ -13,11 +13,16 @@ import Layout from "../layouts/Layout.astro";
       font-family: "Work Sans", sans-serif;
       font-optical-sizing: auto;
       font-style: normal;
-      font-weight: 100;
     }
 
-    .header h1 .subtitle {
-      font-weight: 150;
+    @media (width >= 48rem) {
+      .header h1 {
+        font-weight: 100;
+      }
+
+      .header h1 .subtitle {
+        font-weight: 150;
+      }
     }
   </style>
 
