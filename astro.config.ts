@@ -9,10 +9,10 @@ const getSiteAndBase = (): Pick<AstroUserConfig, "site" | "base"> => {
     };
   }
 
-  // Cloudflare Pagesの場合はCF_PAGES_URLを使用
-  if (process.env.CF_PAGES_URL) {
+  // Netlify（Pull Requestのプレビューでのみ利用）ではDEPLOY_URLを使用
+  if (process.env.NETLIFY && process.env.DEPLOY_URL) {
     return {
-      site: process.env.CF_PAGES_URL,
+      site: process.env.DEPLOY_URL,
     };
   }
 
