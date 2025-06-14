@@ -11,7 +11,7 @@ const staff = await getCollection("staff");
     <section class="flex flex-col items-center">
       <h2 class="text-4xl font-bold my-8">Staff</h2>
       <div class="mb-8">スタッフ一覧は順次更新中です。</div>
-      <div class="grid md:grid-cols-3 gap-12">
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
         {
           staff.map((staff) => (
             <StaffCard

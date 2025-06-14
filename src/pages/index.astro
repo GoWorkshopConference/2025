@@ -8,8 +8,6 @@ import Sponsors from "../components/Sponsors.astro";
 
 <Layout>
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap");
-
     .header {
       background: linear-gradient(135deg, #5a91c7, #6c63b5, #8a4fae, #c7438d);
     }
@@ -18,31 +16,27 @@ import Sponsors from "../components/Sponsors.astro";
       font-family: "Work Sans", sans-serif;
       font-optical-sizing: auto;
       font-style: normal;
+      font-weight: 700;
     }
   </style>
 
   <div class="bg-white min-h-screen flex flex-col">
     <main class="flex-grow md:mx-auto md:space-y-8 space-y-4">
       <header
-        class="header md:px-32 md:py-16 md:mt-8 py-2 text-white flex items-center justify-center"
+        class="header md:px-32 md:py-16 md:mt-8 py-8 text-white flex items-center justify-center text-center"
       >
         <h1>
-          <span class="md:block md:text-9xl text-lg inline-block">
+          <span class="md:block md:text-9xl text-2xl inline-block">
             Go Workshop
           </span>
-          <span class="md:block md:text-9xl text-lg inline-block">
+          <span class="md:block md:text-9xl text-2xl inline-block">
             Conference
           </span>
-          <span
-            class="md:block md:text-6xl md:leading-relaxed text-lg inline-block"
-          >
+          <span class="block md:text-6xl md:leading-relaxed text-2xl">
             2025 IN KOBE
           </span>
         </h1>
       </header>
-      <section class="flex justify-center p-4 md:text-lg">
-        <div class="text-center max-w-2xl"></div>
-      </section>
       <section class="flex flex-col items-center mb-8 p-4 gap-8">
         <dl class="text-center">
           <dt class="mb-2 text-xl text-gray-600 font-semibold">
