@@ -3,6 +3,10 @@ import "../styles/global.css";
 import { withBase } from "../utils/withBase";
 
 const ogpImageURL = new URL(withBase("ogp.png"), Astro.url.origin);
+
+const { title } = Astro.props;
+const baseTitle = "Go Workshop Conference 2025 IN KOBE";
+const _title = title ? `${title} | ${baseTitle}` : baseTitle;
 ---
 
 <!doctype html>
@@ -11,7 +15,7 @@ const ogpImageURL = new URL(withBase("ogp.png"), Astro.url.origin);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Go Workshop Conference 2025 IN KOBE</title>
+    <title>{_title}</title>
     <meta property="og:title" content="Go Workshop Conference 2025 IN KOBE" />
     <meta
       property="og:description"
