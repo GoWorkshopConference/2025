@@ -48,19 +48,10 @@ jobs:
         id: create-pr
         uses: ./.github/actions/create-pull-request
         with:
-          token: ${{ steps.generate_token.outputs.token }}
-          title: "Add new staff member: ${{ github.event.client_payload.name }}"
-          branch: "${{ env.BRANCH_NAME }}"
-          body: |
-            ## 新しいスタッフメンバーの追加
-            
-            **名前:** ${{ github.event.client_payload.name }}
-            **ファイル名:** ${{ github.event.client_payload.filename }}.json
-            **所属組織:** ${{ github.event.client_payload.organization }}
-            **SNSリンク:** ${{ github.event.client_payload.link }}
-            **画像URL:** ${{ github.event.client_payload.image }}
-            
-            Google Formから自動的に作成されたPRです。
+            token: ${{ steps.generate_token.outputs.token }}
+            title: "Add new staff member: ${{ github.event.client_payload.name }}"
+            branch: "${{ env.BRANCH_NAME }}"
+            body: "## 新しいスタッフメンバーの追加\n\n**名前:** ${{ github.event.client_payload.name }}\n**ファイル名:** ${{ github.event.client_payload.filename }}.json\n**所属組織:** ${{ github.event.client_payload.organization }}\n**SNSリンク:** ${{ github.event.client_payload.link }}\n**画像URL:** ${{ github.event.client_payload.image }}\n\nGoogle Formから自動的に作成されたPRです。"
       
       - name: Notify Discord
         if: success()
