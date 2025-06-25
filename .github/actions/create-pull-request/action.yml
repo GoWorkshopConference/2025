@@ -39,6 +39,13 @@ runs:
             "body": "${{ inputs.body }}"
           }')
         
-        url=$(echo "$response" | jq -r '.html_url')
-        echo "url=$url" >> $GITHUB_OUTPUT
-        echo "Pull Request created: $url"
+        # エラーチェックを追加
+        url=$(echo "$response" | jq -r '.html_url // empty')
+        if [ -n "$url" ] && [ "$url" != "null" ]; then
+          echo "url=$url" >> $GITHUB_OUTPUT
+          echo "Pull Request created: $url"
+        else
+          echo "Error creating PR:"
+          echo "$response"
+          exit 1
+        fi

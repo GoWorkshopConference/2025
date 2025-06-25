@@ -23,14 +23,18 @@ jobs:
       
       - name: Commit and push
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          
-          branch_name="add-staff-${{ github.event.client_payload.filename }}"
-          git checkout -b "$branch_name"
-          git add src/data/staff/${{ github.event.client_payload.filename }}.json
-          git commit -m "Add new staff member: ${{ github.event.client_payload.name }}"
-          git push origin "$branch_name"
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            
+            # タイムスタンプでユニークなブランチ名を作成
+            timestamp=$(date +%Y%m%d-%H%M%S)
+            branch_name="add-staff-${{ github.event.client_payload.filename }}-${timestamp}"
+            echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
+            
+            git checkout -b "$branch_name"
+            git add src/data/staff/${{ github.event.client_payload.filename }}.json
+            git commit -m "Add new staff member: ${{ github.event.client_payload.name }}"
+            git push origin "$branch_name"
       
       - name: Create Pull Request
         id: create-pr
@@ -38,7 +42,7 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           title: "Add new staff member: ${{ github.event.client_payload.name }}"
-          branch: "add-staff-${{ github.event.client_payload.filename }}"
+          branch: "${{ env.BRANCH_NAME }}"
           body: |
             ## 新しいスタッフメンバーの追加
             
