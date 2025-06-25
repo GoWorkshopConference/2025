@@ -57,11 +57,5 @@ jobs:
         if: success()
         uses: ./.github/actions/notify-discord
         with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          message: |
-            🎉 **新しいスタッフのPRが作成されました！**
-            
-            **メンバー:** ${{ github.event.client_payload.name }}
-            **所属:** ${{ github.event.client_payload.organization }}
-            
-            PRをレビューしてください：${{ steps.create-pr.outputs.pull-request-url }}
+            webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+            message: "🎉 **新しいスタッフのPRが作成されました！** **メンバー:** ${{ github.event.client_payload.name }} PRをレビューしてください：${{ steps.create-pr.outputs.pull-request-url }}"

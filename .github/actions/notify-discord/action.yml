@@ -13,8 +13,17 @@ runs:
     - name: Send Discord notification
       shell: bash
       run: |
-        curl -H "Content-Type: application/json" \
-          -d '{
-            "content": "${{ inputs.message }}"
-          }' \
-          "${{ inputs.webhook-url }}"
+        # jqを使って安全にJSONを作成
+        json_data=$(jq -n \
+          --arg content "${{ inputs.message }}" \
+          '{
+            content: $content
+          }')
+        
+        echo "Sending Discord notification..."
+        
+        response=$(curl -s -H "Content-Type: application/json" \
+          -d "$json_data" \
+          "${{ inputs.webhook-url }}")
+        
+        echo "Discord response: $response"
