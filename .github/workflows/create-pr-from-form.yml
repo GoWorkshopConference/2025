@@ -9,8 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+      
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
       
       - name: Create staff file
         uses: ./.github/actions/create-staff-file
@@ -23,24 +32,23 @@ jobs:
       
       - name: Commit and push
         run: |
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            
-            # タイムスタンプでユニークなブランチ名を作成
-            timestamp=$(date +%Y%m%d-%H%M%S)
-            branch_name="add-staff-${{ github.event.client_payload.filename }}-${timestamp}"
-            echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
-            
-            git checkout -b "$branch_name"
-            git add src/data/staff/${{ github.event.client_payload.filename }}.json
-            git commit -m "Add new staff member: ${{ github.event.client_payload.name }}"
-            git push origin "$branch_name"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          timestamp=$(date +%Y%m%d-%H%M%S)
+          branch_name="add-staff-${{ github.event.client_payload.filename }}-${timestamp}"
+          echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
+          
+          git checkout -b "$branch_name"
+          git add src/data/staff/${{ github.event.client_payload.filename }}.json
+          git commit -m "Add new staff member: ${{ github.event.client_payload.name }}"
+          git push origin "$branch_name"
       
       - name: Create Pull Request
         id: create-pr
         uses: ./.github/actions/create-pull-request
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.generate_token.outputs.token }}
           title: "Add new staff member: ${{ github.event.client_payload.name }}"
           branch: "${{ env.BRANCH_NAME }}"
           body: |
