@@ -1,0 +1,67 @@
+name: Create PR from Google Form
+
+on:
+  repository_dispatch:
+    types: [form-submission]
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Create staff JSON file
+        run: |
+          # src/data/staffディレクトリに配置
+          mkdir -p src/data/staff
+          
+          # 半角英数のお名前をファイル名として使用
+          filename="${{ github.event.client_payload.filename }}"
+          
+          # JSONファイルを作成
+          cat > src/data/staff/${filename}.json << 'EOF'
+          {
+            "name": "${{ github.event.client_payload.name }}",
+            "image": "${{ github.event.client_payload.image }}",
+            "link": "${{ github.event.client_payload.link }}",
+            "organization": "${{ github.event.client_payload.organization }}"
+          }
+          EOF
+      
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add new staff member: ${{ github.event.client_payload.name }}"
+          title: "Add new staff member: ${{ github.event.client_payload.name }}"
+          body: |
+            ## 新しいスタッフメンバーの追加
+            
+            **名前:** ${{ github.event.client_payload.name }}
+            **ファイル名:** ${{ github.event.client_payload.filename }}.json
+            **所属組織:** ${{ github.event.client_payload.organization }}
+            **SNSリンク:** ${{ github.event.client_payload.link }}
+            **画像URL:** ${{ github.event.client_payload.image }}
+            
+            Google Formから自動的に作成されたPRです。
+          branch: add-staff-${{ github.event.client_payload.filename }}
+          delete-branch: true
+      
+      - name: Notify Discord
+        if: success()
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        with:
+          args: |
+            🎉 **新しいスタッフのPRが作成されました！**
+            
+            **メンバー:** ${{ github.event.client_payload.name }}
+            **所属:** ${{ github.event.client_payload.organization }}
+            
+            PRをレビューしてください：https://github.com/GoWorkshopConference/2025/pulls
