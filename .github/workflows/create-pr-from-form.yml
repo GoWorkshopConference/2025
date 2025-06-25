@@ -58,4 +58,4 @@ jobs:
         uses: ./.github/actions/notify-discord
         with:
             webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-            message: "🎉 **新しいスタッフのPRが作成されました！**\n**PRを確認してください**${{ steps.create-pr.outputs.pull-request-url }}"
+            message: "🎉 **新しいスタッフのPRが作成されました！PRを確認してください。**\n${{ steps.create-pr.outputs.pull-request-url }}"
