@@ -1,0 +1,33 @@
+name: 'Create Staff File'
+description: 'Create a JSON file for staff member'
+inputs:
+  name:
+    description: 'Staff member name'
+    required: true
+  filename:
+    description: 'File name (alphanumeric)'
+    required: true
+  image:
+    description: 'Image URL'
+    required: true
+  link:
+    description: 'Social media link'
+    required: false
+  organization:
+    description: 'Organization name'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Create staff JSON file
+      shell: bash
+      run: |
+        mkdir -p src/data/staff
+        cat > src/data/staff/${{ inputs.filename }}.json << 'EOF'
+        {
+          "name": "${{ inputs.name }}",
+          "image": "${{ inputs.image }}",
+          "link": "${{ inputs.link }}",
+          "organization": "${{ inputs.organization }}"
+        }
+        EOF

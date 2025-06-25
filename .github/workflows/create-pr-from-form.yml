@@ -7,40 +7,38 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Create staff JSON file
+      - name: Create staff file
+        uses: ./.github/actions/create-staff-file
+        with:
+          name: ${{ github.event.client_payload.name }}
+          filename: ${{ github.event.client_payload.filename }}
+          image: ${{ github.event.client_payload.image }}
+          link: ${{ github.event.client_payload.link }}
+          organization: ${{ github.event.client_payload.organization }}
+      
+      - name: Commit and push
         run: |
-          # src/data/staffディレクトリに配置
-          mkdir -p src/data/staff
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           
-          # 半角英数のお名前をファイル名として使用
-          filename="${{ github.event.client_payload.filename }}"
-          
-          # JSONファイルを作成
-          cat > src/data/staff/${filename}.json << 'EOF'
-          {
-            "name": "${{ github.event.client_payload.name }}",
-            "image": "${{ github.event.client_payload.image }}",
-            "link": "${{ github.event.client_payload.link }}",
-            "organization": "${{ github.event.client_payload.organization }}"
-          }
-          EOF
+          branch_name="add-staff-${{ github.event.client_payload.filename }}"
+          git checkout -b "$branch_name"
+          git add src/data/staff/${{ github.event.client_payload.filename }}.json
+          git commit -m "Add new staff member: ${{ github.event.client_payload.name }}"
+          git push origin "$branch_name"
       
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        id: create-pr
+        uses: ./.github/actions/create-pull-request
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Add new staff member: ${{ github.event.client_payload.name }}"
+          token: ${{ secrets.PAT_TOKEN }}
           title: "Add new staff member: ${{ github.event.client_payload.name }}"
+          branch: "add-staff-${{ github.event.client_payload.filename }}"
           body: |
             ## 新しいスタッフメンバーの追加
             
@@ -51,19 +49,16 @@ jobs:
             **画像URL:** ${{ github.event.client_payload.image }}
             
             Google Formから自動的に作成されたPRです。
-          branch: add-staff-${{ github.event.client_payload.filename }}
-          delete-branch: true
       
       - name: Notify Discord
         if: success()
-        uses: Ilshidur/action-discord@master
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: ./.github/actions/notify-discord
         with:
-          args: |
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          message: |
             🎉 **新しいスタッフのPRが作成されました！**
             
             **メンバー:** ${{ github.event.client_payload.name }}
             **所属:** ${{ github.event.client_payload.organization }}
             
-            PRをレビューしてください：https://github.com/GoWorkshopConference/2025/pulls
+            PRをレビューしてください：${{ steps.create-pr.outputs.pull-request-url }}
