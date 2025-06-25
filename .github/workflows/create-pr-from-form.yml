@@ -40,7 +40,7 @@ jobs:
         id: create-pr
         uses: ./.github/actions/create-pull-request
         with:
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           title: "Add new staff member: ${{ github.event.client_payload.name }}"
           branch: "${{ env.BRANCH_NAME }}"
           body: |
