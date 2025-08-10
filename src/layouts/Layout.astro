@@ -10,7 +10,7 @@ const ogp1200wImageURL = new URL(withBase("logo_1200w.png"), Astro.url.origin);
 const ogp630wImageURL = new URL(withBase("logo_630w.png"), Astro.url.origin);
 
 const { title } = Astro.props;
-const _title = title ? `${title} | ${eventTitle}` : eventTitle;
+const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
 ---
 
 <!doctype html>
@@ -19,8 +19,9 @@ const _title = title ? `${title} | ${eventTitle}` : eventTitle;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{_title}</title>
-    <meta property="og:title" content={eventTitle} />
+    <title>{pageTitle}</title>
+    <meta property="og:site_name" content={eventTitle} />
+    <meta property="og:title" content={title || eventTitle} />
     <meta property="og:description" content={eventDescription} />
     <meta property="og:image" content={ogp1200wImageURL} />
     <meta property="og:type" content="website" />
