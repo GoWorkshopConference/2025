@@ -20,6 +20,7 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <meta property="og:url" content={Astro.url.href} />
     <meta property="og:site_name" content={eventTitle} />
     <meta property="og:title" content={title || eventTitle} />
     <meta property="og:description" content={eventDescription} />
