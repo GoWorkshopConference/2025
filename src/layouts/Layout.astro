@@ -7,6 +7,7 @@ const eventDescription =
   "デザイン・クリエイティブセンター神戸(KIITO)で12/13(土)に開催！";
 
 const ogp1200wImageURL = new URL(withBase("logo_1200w.png"), Astro.url.origin);
+const ogp630wImageURL = new URL(withBase("logo_630w.png"), Astro.url.origin);
 
 const { title } = Astro.props;
 const _title = title ? `${title} | ${eventTitle}` : eventTitle;
@@ -22,6 +23,11 @@ const _title = title ? `${title} | ${eventTitle}` : eventTitle;
     <meta property="og:title" content={eventTitle} />
     <meta property="og:description" content={eventDescription} />
     <meta property="og:image" content={ogp1200wImageURL} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={eventDescription} />
+    <meta name="twitter:image" content={ogp630wImageURL} />
+    <meta name="twitter:card" content="summary" />
   </head>
   <body>
     <nav class="p-4">
