@@ -2,11 +2,15 @@
 import "../styles/global.css";
 import { withBase } from "../utils/withBase";
 
-const ogpImageURL = new URL(withBase("ogp.png"), Astro.url.origin);
+const eventTitle = "Go Workshop Conference 2025 IN KOBE";
+const eventDescription =
+  "デザイン・クリエイティブセンター神戸(KIITO)で12/13(土)に開催！";
+
+const ogp1200wImageURL = new URL(withBase("logo_1200w.png"), Astro.url.origin);
+const ogp630wImageURL = new URL(withBase("logo_630w.png"), Astro.url.origin);
 
 const { title } = Astro.props;
-const baseTitle = "Go Workshop Conference 2025 IN KOBE";
-const _title = title ? `${title} | ${baseTitle}` : baseTitle;
+const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
 ---
 
 <!doctype html>
@@ -15,13 +19,17 @@ const _title = title ? `${title} | ${baseTitle}` : baseTitle;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{_title}</title>
-    <meta property="og:title" content="Go Workshop Conference 2025 IN KOBE" />
-    <meta
-      property="og:description"
-      content="デザイン・クリエイティブセンター神戸(KIITO)で12/13(土)に開催！"
-    />
-    <meta property="og:image" content={ogpImageURL} />
+    <title>{pageTitle}</title>
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:site_name" content={eventTitle} />
+    <meta property="og:title" content={title || eventTitle} />
+    <meta property="og:description" content={eventDescription} />
+    <meta property="og:image" content={ogp1200wImageURL} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={eventDescription} />
+    <meta name="twitter:image" content={ogp630wImageURL} />
+    <meta name="twitter:card" content="summary" />
   </head>
   <body>
     <nav class="p-4">
