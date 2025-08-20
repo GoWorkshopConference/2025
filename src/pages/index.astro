@@ -21,50 +21,61 @@ import Layout from "../layouts/Layout.astro";
         </h1>
       </header>
       <section class="flex flex-col items-center mb-8 p-4 gap-8">
-        <div
-          class="text-center p-8 border border-gray-200 rounded-lg shadow-sm"
-        >
-          <h2 class="mb-4 text-xl text-gray-600 font-semibold">参加申し込み</h2>
-          <div class="text-lg space-y-4">
-            <p>
-              connpassにて参加申し込みを受け付けています。
-              <br />
-              参加費は無料です。ぜひご参加ください！
-            </p>
-            <a
-              class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group"
-              href="https://go-workshop-conference.connpass.com/event/362435/"
-              target="_blank"
-              rel="noopener noreferrer"
+        <div class="text-center text-lg max-w-2xl">
+          Go Workshop
+          Conferenceは、みんなで手を動かしながら交流するワークショップを中心としたGo言語のイベントです。初心者から上級者まで、Go言語に関心のあるすべての方を対象としています。
+        </div>
+        <div class="inline-flex flex-col justify-center gap-4">
+          <a
+            class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group"
+            href="https://go-workshop-conference.connpass.com/event/362435/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span
+              class="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent group-hover:text-white flex items-center justify-center gap-2"
             >
-              <span
-                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent group-hover:text-white flex items-center gap-2"
+              一般参加する
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                参加申し込みはこちらから
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </a>
-          </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </a>
+          <a
+            class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group"
+            href=""
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span
+              class="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent group-hover:text-white flex items-center justify-center gap-2"
+            >
+              ワークショップ出展を申し込む
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </span>
+          </a>
         </div>
         <dl class="text-center">
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">
-            どんなイベント？
-          </dt>
-          <dd class="mb-8 text-lg max-w-2xl">
-            Go Workshop
-            Conferenceは、みんなで手を動かしながら交流するワークショップを中心としたGo言語のイベントです。初心者から上級者まで、Go言語に関心のあるすべての方を対象としています。
-          </dd>
           <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日</dt>
           <dd class="mb-8 text-lg">2025/12/13（土）</dd>
           <dt class="mb-2 text-xl text-gray-600 font-semibold">会場</dt>
