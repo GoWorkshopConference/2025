@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import type { AstroUserConfig } from "astro";
 import tailwindcss from "@tailwindcss/vite";
+import remarkBreaks from 'remark-breaks';
 
 const getSiteAndBase = (): Pick<AstroUserConfig, "site" | "base"> => {
   if (import.meta.env.DEV) {
@@ -28,5 +29,8 @@ export default defineConfig({
   ...getSiteAndBase(),
   vite: {
     plugins: [tailwindcss()],
+  },
+  markdown: {
+    remarkPlugins: [remarkBreaks],
   },
 });
