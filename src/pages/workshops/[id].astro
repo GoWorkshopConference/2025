@@ -1,0 +1,33 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import OrganizerCard from "../../components/OrganizerCard.astro";
+
+export async function getStaticPaths() {
+  const workshops = await getCollection("workshops");
+  return workshops.map((workshop) => ({
+    params: { id: workshop.id },
+    props: { workshop },
+  }));
+}
+
+const { workshop } = Astro.props;
+const entry = await getEntry("workshops", workshop.id);
+if (!entry) {
+  throw new Error(`Workshop not found: ${workshop.id}`);
+}
+const { Content } = await render(entry);
+---
+
+<Layout title={workshop.data.title}>
+  <main>
+    <h1 class="text-4xl font-bold my-8">{workshop.data.title}</h1>
+    <Content />
+    <OrganizerCard
+      name={workshop.data.organizer.name}
+      icon={workshop.data.organizer.icon}
+      organization={workshop.data.organizer.organization}
+      profile={workshop.data.organizer.profile}
+    />
+  </main>
+</Layout>

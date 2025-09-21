@@ -1,16 +1,19 @@
 ---
-const { title, description, organizer } = Astro.props;
+import { withBase } from "../utils/withBase";
+import OrganizerCard from "./OrganizerCard.astro";
+
+const { title, description, organizer, slug } = Astro.props;
 ---
 
-<div class="flex flex-col gap-4 rounded shadow-lg p-8">
-  <h3 class="font-bold text-2xl">{title}</h3>
-  <p>{description}</p>
-  <div class="flex items-center gap-4 mt-4">
-    <img class="size-16 rounded-full shadow-lg" src={organizer.icon} />
-    <div>
-      <div class="font-bold">{organizer.name}</div>
-      {organizer.organization && <div class="text-sm text-gray-500">{organizer.organization}</div>}
-    </div>
+<a href={withBase(`workshops/${slug}`)} class="block h-full">
+  <div class="flex flex-col gap-4 rounded shadow-lg p-8 h-full">
+    <h3 class="font-bold text-2xl">{title}</h3>
+    <p>{description}</p>
+    <OrganizerCard
+      name={organizer.name}
+      icon={organizer.icon}
+      organization={organizer.organization}
+      profile={organizer.profile}
+    />
   </div>
-  <p class="text-sm mt-2">{organizer.profile}</p>
-</div>
+</a>

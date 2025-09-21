@@ -17,7 +17,7 @@ const workshops = defineCollection({
       profile: z.string(),
     }),
   }),
-  loader: glob({ pattern: "*.json", base: "src/data/workshops" }),
+  loader: glob({ pattern: "*.md", base: "src/data/workshops" }),
 });
 
 export const collections = { staff, workshops };
