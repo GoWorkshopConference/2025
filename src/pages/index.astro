@@ -7,18 +7,17 @@ import Layout from "../layouts/Layout.astro";
   <div class="bg-white min-h-screen flex flex-col">
     <main class="flex-grow md:mx-auto md:space-y-8 space-y-4">
       <header class="flex flex-col items-center justify-center text-center">
-        <h1>
-          <picture>
-            <source
-              media="(min-width: 768px)"
-              srcset={withBase("/logo_1200w.png")}
-            />
-            <img
-              src={withBase("/logo_630w.png")}
-              alt="Go Workshop Conference 2025 IN KOBE"
-            />
-          </picture>
-        </h1>
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset={withBase("/logo_1200w.png")}
+          />
+          <img
+            class="w-screen max-w-none md:w-content md:max-w-full"
+            src={withBase("/logo_630w.png")}
+            alt="Go Workshop Conference 2025 IN KOBE"
+          />
+        </picture>
       </header>
       <section class="flex flex-col items-center mb-8 p-4 gap-8">
         <div class="text-center text-lg max-w-2xl">
