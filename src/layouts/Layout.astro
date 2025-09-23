@@ -31,9 +31,9 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
     <meta name="twitter:image" content={ogp630wImageURL} />
     <meta name="twitter:card" content="summary" />
   </head>
-  <body>
-    <nav class="p-4">
-      <ul class="flex gap-4 md:p-4 md:text-xl">
+  <body class="min-h-screen flex flex-col">
+    <nav class="mx-4 md:mx-auto my-4 md:my-8 md:max-w-content md:w-full">
+      <ul class="flex gap-4 md:text-xl">
         <li>
           <a href={withBase()}>Home</a>
         </li>
@@ -45,15 +45,37 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
         </li>
       </ul>
     </nav>
-    <slot />
+    <main class="mx-4 md:mx-auto md:max-w-content flex-grow md:w-full">
+      <slot />
+    </main>
+    <footer class="w-full bg-gray-100 p-8 mx-auto">
+      <div
+        class="mx-auto flex flex-col md:flex-row md:justify-between items-center gap-4 md:max-w-content"
+      >
+        <div class="w-18">
+          <img
+            src={withBase("/go_text_navy.png")}
+            alt="Go Workshop Conference 2025 IN KOBE"
+          />
+        </div>
+        <div class="text-center md:text-right text-sm text-gray-600">
+          The original Go gopher was designed by
+          <a class="underline" href="https://reneefrench.blogspot.com/"
+            >Renée French</a
+          >.
+          <br />
+          Event illustrations by
+          <a class="underline" href="https://github.com/UserMiyam">MIYA</a>.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@450..700&display=swap");
 
-  html,
-  body {
+  html {
     margin: 0;
     width: 100%;
     height: 100%;
