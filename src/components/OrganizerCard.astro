@@ -2,15 +2,12 @@
 const { name, icon, organization, profile } = Astro.props;
 ---
 
-<div class="flex items-center gap-4 mt-4">
+<div class="shadow-lg p-4 flex flex-col gap-4">
+  <div class="flex items-center gap-4 mt-4">
     <img class="size-16 rounded-full shadow-lg" src={icon} />
     <div>
       <div class="font-bold">{name}</div>
-      {
-        organization && (
-          <div class="text-sm text-gray-500">{organization}</div>
-        )
-      }
+      {organization && <div class="text-sm text-gray-500">{organization}</div>}
     </div>
   </div>
   <p class="text-sm mt-2">{profile}</p>

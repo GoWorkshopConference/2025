@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* md向けの最大ページ幅。イベントロゴ（logo_1200w.png）の横幅と一致させている。 */
