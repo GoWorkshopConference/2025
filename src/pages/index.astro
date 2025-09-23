@@ -7,18 +7,17 @@ import Layout from "../layouts/Layout.astro";
   <div class="bg-white min-h-screen flex flex-col">
     <main class="flex-grow md:mx-auto md:space-y-8 space-y-4">
       <header class="flex flex-col items-center justify-center text-center">
-        <h1>
-          <picture>
-            <source
-              media="(min-width: 768px)"
-              srcset={withBase("/logo_1200w.png")}
-            />
-            <img
-              src={withBase("/logo_630w.png")}
-              alt="Go Workshop Conference 2025 IN KOBE"
-            />
-          </picture>
-        </h1>
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset={withBase("/logo_1200w.png")}
+          />
+          <img
+            class="w-screen max-w-none md:w-content md:max-w-full"
+            src={withBase("/logo_630w.png")}
+            alt="Go Workshop Conference 2025 IN KOBE"
+          />
+        </picture>
       </header>
       <section class="flex flex-col items-center mb-8 p-4 gap-8">
         <div class="text-center text-lg max-w-2xl">
@@ -140,23 +139,4 @@ import Layout from "../layouts/Layout.astro";
       </section>
     </main>
   </div>
-  <footer
-    class="bg-gray-100 p-8 flex flex-col md:flex-row md:justify-between items-center gap-4"
-  >
-    <div class="w-18">
-      <img
-        src={withBase("/go_text_navy.png")}
-        alt="Go Workshop Conference 2025 IN KOBE"
-      />
-    </div>
-    <div class="text-center md:text-right text-sm text-gray-600">
-      The original Go gopher was designed by
-      <a class="underline" href="https://reneefrench.blogspot.com/"
-        >Renée French</a
-      >.
-      <br />
-      Event illustrations by
-      <a class="underline" href="https://github.com/UserMiyam">MIYA</a>.
-    </div>
-  </footer>
 </Layout>
