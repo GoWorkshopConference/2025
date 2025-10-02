@@ -1,0 +1,31 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const entry = await getEntry("posts", post.id);
+if (!entry) {
+  throw new Error(`Posts not found: ${post.id}`);
+}
+const { Content } = await render(entry);
+---
+
+<Layout title={post.data.title}>
+  <section class="flex flex-col gap-2 md:gap-4">
+    <h1 class="text-4xl font-bold my-8">{post.data.title}</h1>
+    <div class="text-sm text-gray-500">
+      <span>{post.data.publishedAt}</span> by <span>{post.data.author}</span>
+    </div>
+    <div class="prose w-full max-w-none mt-8">
+      <Content />
+    </div>
+  </section>
+</Layout>

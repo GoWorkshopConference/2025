@@ -1,6 +1,13 @@
 ---
 import { withBase } from "../utils/withBase";
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import PostCard from "../components/PostCard.astro";
+
+// ブログ記事を新しい順に3件取得
+const posts = (await getCollection("posts"))
+  .sort((a, b) => (a.data.publishedAt < b.data.publishedAt ? 1 : -1))
+  .slice(0, 3);
 ---
 
 <Layout>
@@ -77,41 +84,67 @@ import Layout from "../layouts/Layout.astro";
             </div>
           </a>
         </div>
-        <dl class="text-center">
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日</dt>
-          <dd class="mb-8 text-lg">2025/12/13（土）</dd>
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">会場</dt>
-          <dd class="mb-8 text-lg">
+        <section class="my-12">
+          <h2 class="text-2xl font-bold mb-6 text-center">ブログ</h2>
+          <div class="flex flex-col gap-8">
+            {
+              posts.map((item) => (
+                <PostCard
+                  title={item.data.title}
+                  author={item.data.author}
+                  publishedAt={item.data.publishedAt}
+                  slug={item.id}
+                />
+              ))
+            }
+          </div>
+          <div class="mt-6 text-center">
             <a
-              href="https://kiito.jp/access/"
-              target="_blank"
-              class="text-blue-600 hover:text-blue-800 underline hover:no-underline"
+              href={withBase("posts")}
+              class="inline-block text-blue-600 hover:text-blue-800 underline font-semibold"
             >
-              デザイン・クリエイティブセンター神戸(KIITO)
+              もっと見る
             </a>
-            <br />
-            〒651-0082 兵庫県神戸市中央区小野浜町 1-4
-          </dd>
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
-          <dd class="mb-8 text-lg">無料</dd>
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
-          <dd class="mb-8 text-lg">
-            Go Workshop Conference 2025 IN KOBE実行委員会
-          </dd>
-          <dt class="mb-2 text-xl text-gray-600 font-semibold">共催</dt>
-          <dd class="text-lg">一般社団法人Gophers Japan</dd>
-        </dl>
-        <div>
-          <a
-            href="https://twitter.com/goconjp?ref_src=twsrc%5Etfw"
-            class="twitter-follow-button"
-            data-show-count="false">Follow @goconjp</a
-          ><script
-            is:inline
-            async
-            src="https://platform.twitter.com/widgets.js"
-            charset="utf-8"></script>
-        </div>
+          </div>
+        </section>
+        <section class="my-12 flex flex-col items-center">
+          <h2 class="text-2xl font-bold mb-6 text-center">開催概要</h2>
+          <dl class="text-center">
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日</dt>
+            <dd class="mb-8 text-lg">2025/12/13（土）</dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">会場</dt>
+            <dd class="mb-8 text-lg">
+              <a
+                href="https://kiito.jp/access/"
+                target="_blank"
+                class="text-blue-600 hover:text-blue-800 underline hover:no-underline"
+              >
+                デザイン・クリエイティブセンター神戸(KIITO)
+              </a>
+              <br />
+              〒651-0082 兵庫県神戸市中央区小野浜町 1-4
+            </dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
+            <dd class="mb-8 text-lg">無料</dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
+            <dd class="mb-8 text-lg">
+              Go Workshop Conference 2025 IN KOBE実行委員会
+            </dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">共催</dt>
+            <dd class="text-lg">一般社団法人Gophers Japan</dd>
+          </dl>
+          <div>
+            <a
+              href="https://twitter.com/goconjp?ref_src=twsrc%5Etfw"
+              class="twitter-follow-button"
+              data-show-count="false">Follow @goconjp</a
+            ><script
+              is:inline
+              async
+              src="https://platform.twitter.com/widgets.js"
+              charset="utf-8"></script>
+          </div>
+        </section>
         <div
           class="text-center p-8 border border-gray-200 rounded-lg shadow-sm"
         >
