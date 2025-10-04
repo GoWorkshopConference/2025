@@ -4,6 +4,7 @@ import WorkshopCard from "../components/WorkshopCard.astro";
 import { getCollection } from "astro:content";
 
 const workshops = await getCollection("workshops");
+workshops.sort((a, b) => (a.id > b.id ? 1 : -1));
 ---
 
 <Layout title="Workshops">
