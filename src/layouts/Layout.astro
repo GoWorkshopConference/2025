@@ -37,6 +37,17 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
         <li>
           <a href={withBase()}>Home</a>
         </li>
+        <li>
+          <a href={withBase("workshops")}>Workshops</a>
+        </li>
+        {
+          // ブログ公開時まで一時的に導線を隠す
+          false && (
+            <li>
+              <a href={withBase("posts")}>Blog</a>
+            </li>
+          )
+        }
         {
           // ワークショップ公開時まで一時的に導線を隠す
           false && (

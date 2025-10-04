@@ -20,4 +20,13 @@ const workshops = defineCollection({
   loader: glob({ pattern: "*.md", base: "src/data/workshops" }),
 });
 
-export const collections = { staff, workshops };
+const posts = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    author: z.string(),
+    publishedAt: z.string(),
+  }),
+  loader: glob({ pattern: "*.md", base: "src/data/posts" }),
+});
+
+export const collections = { staff, workshops, posts };
