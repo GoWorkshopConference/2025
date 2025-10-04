@@ -1,4 +1,4 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
 
 import { glob } from "astro/loaders";
 
@@ -6,4 +6,18 @@ const staff = defineCollection({
   loader: glob({ pattern: "*.json", base: "src/data/staff" }),
 });
 
-export const collections = { staff };
+const workshops = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    isGuest: z.boolean().optional(),
+    organizer: z.object({
+      name: z.string(),
+      icon: z.string().url(),
+      organization: z.string().optional(),
+      profile: z.string(),
+    }),
+  }),
+  loader: glob({ pattern: "*.md", base: "src/data/workshops" }),
+});
+
+export const collections = { staff, workshops };

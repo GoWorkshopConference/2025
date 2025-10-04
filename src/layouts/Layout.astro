@@ -31,12 +31,20 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
     <meta name="twitter:image" content={ogp630wImageURL} />
     <meta name="twitter:card" content="summary" />
   </head>
-  <body class="min-h-screen flex flex-col">
-    <nav class="mx-4 md:mx-auto my-4 md:my-8 md:max-w-content md:w-full">
+  <body class="min-h-screen flex flex-col gap-4 md:gap-8">
+    <nav class="mx-4 md:mx-auto mt-4 md:mt-8 md:max-w-content md:w-full">
       <ul class="flex gap-4 md:text-xl">
         <li>
           <a href={withBase()}>Home</a>
         </li>
+        {
+          // ワークショップ公開時まで一時的に導線を隠す
+          false && (
+            <li>
+              <a href={withBase("workshops")}>Workshops</a>
+            </li>
+          )
+        }
         <li>
           <a href={withBase("staff")}>Staff</a>
         </li>

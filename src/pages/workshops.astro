@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WorkshopCard from "../components/WorkshopCard.astro";
+import { getCollection } from "astro:content";
+
+const workshops = await getCollection("workshops");
+---
+
+<Layout title="Workshops">
+  <main>
+    <h1 class="text-4xl font-bold my-8">Workshops</h1>
+    <div class="flex flex-col gap-12 mb-12">
+      {
+        workshops.map((workshop) => (
+          <WorkshopCard
+            title={workshop.data.title}
+            organizer={workshop.data.organizer}
+            slug={workshop.id}
+          />
+        ))
+      }
+    </div>
+  </main>
+</Layout>
