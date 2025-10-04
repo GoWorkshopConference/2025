@@ -16,7 +16,6 @@ const workshops = await getCollection("workshops");
             title={workshop.data.title}
             organizer={workshop.data.organizer}
             slug={workshop.id}
-            isGuest={workshop.data.isGuest}
           />
         ))
       }

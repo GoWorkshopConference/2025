@@ -48,6 +48,14 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
             </li>
           )
         }
+        {
+          // ワークショップ公開時まで一時的に導線を隠す
+          false && (
+            <li>
+              <a href={withBase("workshops")}>Workshops</a>
+            </li>
+          )
+        }
         <li>
           <a href={withBase("staff")}>Staff</a>
         </li>
