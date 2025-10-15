@@ -1,32 +1,32 @@
 ---
-title: "Go Workshop Conference 2025、12月13日（土）に開催決定！初心者も大歓迎"
+title: "Go Workshop Conference 2025 IN KOBE 2025 IN KOBE、12月13日（土）に開催決定！初心者も大歓迎"
 author: "repunit11"
 publishedAt: "2025-10-10"
 ---
 
-こんにちは！Go Workshop Conference 2025 広報担当のrepunit11です。
-今年の Go Workshop Conference 2025 は、12月13日（土）に開催されます！
+こんにちは！Go Workshop Conference 2025 IN KOBE 広報担当のrepunit11です。
+今年の Go Workshop Conference 2025 IN KOBE は、12月13日（土）に開催されます！
 
-このブログでは、イベントの見どころや運営メンバーからのメッセージなど、Go Workshop Conference 2025 の魅力をお伝えします。
+このブログでは、イベントの見どころや運営メンバーからのメッセージなど、Go Workshop Conference 2025 IN KOBE の魅力をお伝えします。
 初回となるこの記事では、イベントの雰囲気や、初心者の方にもぜひ参加してほしい理由をご紹介します。
 
-## Go Workshop Conference とは？
+## Go Workshop Conference 2025 IN KOBE とは？
 
-Go Workshop Conference は、Go言語を中心にさまざまなワークショップを通じて、参加者同士が自由に話し合い、学び合う場を提供するイベントです！
+Go Workshop Conference 2025 IN KOBE は、Go言語を中心にさまざまなワークショップを通じて、参加者同士が自由に話し合い、学び合う場を提供するイベントです！
 初心者から上級者まで、幅広いレベルの参加者が集まり、Go言語の魅力を共有し、スキルアップを図ることができます。
 
 ## 運営からのメッセージ
 
 私はこのイベントの運営をしていますが、Go言語にすごく詳しいわけではありません。
 Goを学び始めてまだ1年半ほどの初心者です。
-それでも、Go Workshop Conference 2025 の運営に携わることで、Goの魅力を再発見し、コミュニティの一員として成長できていると感じています。
+それでも、Go Workshop Conference 2025 IN KOBE の運営に携わることで、Goの魅力を再発見し、コミュニティの一員として成長できていると感じています。
 
-Go Workshop Conference 2025 は、初心者の方にも安心して参加できるように設計されています。
+Go Workshop Conference 2025 IN KOBE は、初心者の方にも安心して参加できるように設計されています。
 たまたまこのイベントを見つけた初心者の方も、ぜひ気軽に参加してみてください。参加してよかったと思えるように運営も頑張っています！
 
 ## 見どころ
 
-Go Workshop Conference 2025 では、以下のような見どころがあります。
+Go Workshop Conference 2025 IN KOBE では、以下のような見どころがあります。
 
 - **多様なワークショップ**: 初心者向けから上級者向けまで、さまざまなレベルのワークショップが用意されています。自分のスキルに合ったセッションを選んで参加できます。
 
@@ -52,7 +52,7 @@ Workshopの一部をご紹介します！
 
 ## おわりに
 
-Go Workshop Conference 2025 は、Go言語を学びたいすべての方にとって、素晴らしい機会です。
+Go Workshop Conference 2025 IN KOBE は、Go言語を学びたいすべての方にとって、素晴らしい機会です。
 ぜひ、12月13日（土）に神戸で開催されるこのイベントに参加して、Goの魅力を一緒に楽しみましょう！
 最新情報や詳細は、公式ウェブサイトやSNSで随時更新される予定ですので、ぜひチェックしてください。
 
