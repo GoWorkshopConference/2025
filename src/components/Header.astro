@@ -1,0 +1,122 @@
+---
+import { withBase } from "../utils/withBase";
+import NavigationItems from "./NavigationItems.astro";
+---
+
+<nav class="mx-4 md:mx-auto mt-4 md:mt-8 md:max-w-content md:w-full font-work-sans font-normal">
+  <div class="flex items-center justify-between">
+    <a href={withBase()} class="w-12 h-12">
+      <img
+        src={withBase("/go_text_navy.png")}
+        alt="Go Workshop Conference 2025 IN KOBE"
+        class="w-full h-full object-contain"
+      />
+    </a>
+    
+    <!-- PC時のナビゲーション（右側） -->
+    <NavigationItems className="hidden md:flex gap-4 md:text-xl" />
+    
+    <!-- SP時のハンバーガーメニュー（右側） -->
+    <div class="menu-wrapper md:hidden">
+      <input type="checkbox" id="menu-toggle" class="hidden" />
+      
+      <label class="menu-icon" for="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      
+      <div class="overlay"></div>
+      
+      <div class="menu">
+        <NavigationItems className="flex flex-col gap-2" linkClassName="block py-2" />
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .menu-wrapper {
+    position: relative;
+  }
+
+  .menu-icon {
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 3;
+    display: inline-block;
+  }
+
+  .menu-icon span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin: 6px 0;
+    background: #333;
+    border-radius: 2px;
+    transition: 0.4s;
+  }
+
+  #menu-toggle:checked + .menu-icon span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .menu-icon span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 1;
+  }
+
+  #menu-toggle:checked ~ .overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  #menu-toggle:checked ~ .menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+    const overlay = document.querySelector('.overlay');
+
+    if (overlay && menuToggle) {
+      overlay.addEventListener('click', function() {
+        menuToggle.checked = false;
+      });
+    }
+  });
+</script>
+

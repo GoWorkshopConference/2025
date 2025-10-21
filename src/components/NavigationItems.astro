@@ -1,0 +1,28 @@
+---
+import { withBase } from "../utils/withBase";
+
+export interface Props {
+  className?: string;
+  linkClassName?: string;
+}
+
+const { className = "", linkClassName = "" } = Astro.props;
+---
+
+<ul class={className}>
+  <li>
+    <a href={withBase()} class={linkClassName}>Home</a>
+  </li>
+  <li>
+    <a href={withBase("workshops")} class={linkClassName}>Workshops</a>
+  </li>
+  <li>
+    <a href={withBase("posts")}>Blog</a>
+  </li>
+  <li>
+    <a href={withBase("staff")} class={linkClassName}>Staff</a>
+  </li>
+  <li>
+    <a href={withBase("coc")} class={linkClassName}>Code of Conduct</a>
+  </li>
+</ul>

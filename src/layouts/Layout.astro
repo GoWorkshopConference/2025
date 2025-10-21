@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { withBase } from "../utils/withBase";
+import Header from "../components/Header.astro";
 
 const eventTitle = "Go Workshop Conference 2025 IN KOBE";
 const eventDescription =
@@ -32,25 +33,7 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
     <meta name="twitter:card" content="summary" />
   </head>
   <body class="min-h-screen flex flex-col gap-4 md:gap-8">
-    <nav class="mx-4 md:mx-auto mt-4 md:mt-8 md:max-w-content md:w-full">
-      <ul class="flex gap-4 md:text-xl">
-        <li>
-          <a href={withBase()}>Home</a>
-        </li>
-        <li>
-          <a href={withBase("workshops")}>Workshops</a>
-        </li>
-        <li>
-          <a href={withBase("posts")}>Blog</a>
-        </li>
-        <li>
-          <a href={withBase("staff")}>Staff</a>
-        </li>
-        <li>
-          <a href={withBase("coc")}>Code of Conduct</a>
-        </li>
-      </ul>
-    </nav>
+    <Header />
     <main class="mx-4 md:mx-auto md:max-w-content flex-grow md:w-full">
       <slot />
     </main>
@@ -85,10 +68,5 @@ const pageTitle = title ? `${title} | ${eventTitle}` : eventTitle;
     margin: 0;
     width: 100%;
     height: 100%;
-  }
-
-  nav {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 450;
   }
 </style>
