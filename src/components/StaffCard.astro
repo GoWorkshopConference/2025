@@ -1,12 +1,16 @@
 ---
+import { withBase } from "../utils/withBase";
+
 const { name, image, link, organization } = Astro.props;
+
+const defaultImage = withBase("/default_avatar.svg");
 ---
 
 <a
   href={link}
   class="flex flex-col gap-2 items-center size-md rounded shadow-lg p-8"
 >
-  <img class="size-24 rounded-full shadow-lg" src={image} />
+  <img class="size-24 rounded-full shadow-lg" src={image || defaultImage} />
   <div class="font-bold text-xl">{name}</div>
   {organization && <div class="text-sm text-gray-500">{organization}</div>}
 </a>
