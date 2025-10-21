@@ -16,14 +16,9 @@ const { className = "", linkClassName = "" } = Astro.props;
   <li>
     <a href={withBase("workshops")} class={linkClassName}>Workshops</a>
   </li>
-  {
-    // ブログ公開時まで一時的に導線を隠す
-    false && (
-      <li>
-        <a href={withBase("posts")} class={linkClassName}>Blog</a>
-      </li>
-    )
-  }
+  <li>
+    <a href={withBase("posts")}>Blog</a>
+  </li>
   <li>
     <a href={withBase("staff")} class={linkClassName}>Staff</a>
   </li>
