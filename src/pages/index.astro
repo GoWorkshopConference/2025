@@ -31,9 +31,9 @@ const posts = (await getCollection("posts"))
           Go Workshop
           Conferenceは、みんなで手を動かしながら交流するワークショップを中心としたGo言語のイベントです。初心者から上級者まで、Go言語に関心のあるすべての方を対象としています。
         </div>
-        <div class="inline-flex flex-col justify-center gap-4">
+        <div class="inline-flex flex-col justify-center items-center gap-4">
           <a
-            class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group"
+            class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group w-fit"
             href="https://go-workshop-conference.connpass.com/event/362435/"
             target="_blank"
             rel="noopener noreferrer"
@@ -56,60 +56,12 @@ const posts = (await getCollection("posts"))
               </svg>
             </span>
           </a>
-          <a
-            class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSe-_ES3RAXUdCk2J1oaZiD4luGZaFlmPQY2hkcfhVqPi-9xSA/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div
-              class="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent group-hover:text-white flex flex-col items-center justify-center gap-2"
-            >
-              <span class="w-full flex items-center justify-center gap-2">
-                ワークショップ出展を申し込む
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-              <span> （10/31まで） </span>
-            </div>
-          </a>
-          <a
-            class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-sky-600 to-fuchsia-700 focus:ring-2 focus:outline-none focus:ring-sky-300 group"
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfS7_cuv4-Q00YVZjuxmAbL1-xxJgltZ_XyY6ji8TPlfhz4nA/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div
-              class="w-full relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent group-hover:text-white flex flex-col items-center justify-center gap-2"
-            >
-              <span class="w-full flex items-center justify-center gap-2">
-                ブース出展を申し込む
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-              <span> （10/31まで） </span>
-            </div>
-          </a>
+          <div>
+            <p class="text-sm text-gray-600 text-center">
+              ワークショップおよびブースの出展申し込みは10/31をもって締め切りました。<br
+              />ご応募ありがとうございました。
+            </p>
+          </div>
         </div>
         <section class="my-12">
           <h2 class="text-2xl font-bold mb-6 text-center">ブログ</h2>
@@ -152,7 +104,9 @@ const posts = (await getCollection("posts"))
               〒651-0082 兵庫県神戸市中央区小野浜町 1-4
             </dd>
             <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
-            <dd class="mb-8 text-lg">無料（一部のワークショップでは材料費をいただきます）</dd>
+            <dd class="mb-8 text-lg">
+              無料（一部のワークショップでは材料費をいただきます）
+            </dd>
             <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
             <dd class="mb-8 text-lg">
               <div class="flex flex-col items-center justify-center gap-2">
