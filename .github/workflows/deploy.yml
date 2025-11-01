@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v5
 
       # 必要なパッケージをインストールして、pnpm run buildを実行する
-      - uses: withastro/action@v4
+      - uses: withastro/action@v5
         with:
           node-version: 24
 
