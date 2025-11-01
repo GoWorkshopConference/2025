@@ -14,6 +14,9 @@ const { className = "", linkClassName = "" } = Astro.props;
     <a href={withBase()} class={linkClassName}>Home</a>
   </li>
   <li>
+    <a href={withBase("timetable")} class={linkClassName}>Timetable</a>
+  </li>
+  <li>
     <a href={withBase("workshops")} class={linkClassName}>Workshops</a>
   </li>
   <li>
@@ -21,9 +24,6 @@ const { className = "", linkClassName = "" } = Astro.props;
   </li>
   <li>
     <a href={withBase("staff")} class={linkClassName}>Staff</a>
-  </li>
-  <li>
-    <a href={withBase("timetable")} class={linkClassName}>Timetable</a>
   </li>
   <li>
     <a href={withBase("coc")} class={linkClassName}>Code of Conduct</a>
