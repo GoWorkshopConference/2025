@@ -1,4 +1,5 @@
-import schedules from "./schedules.js";
+---
+import schedules from "../utils/schedules.js";
 
 function generate_times() {
   const times = [];
@@ -17,15 +18,6 @@ function generate_times() {
 
 function generate_booths(count) {
   return Array.from({ length: count }, (_, i) => `ブース${i + 1}`);
-}
-
-function create_header_row(table, booths) {
-  const header_row = table.insertRow();
-  const currentDate = new Date();
-  header_row.insertCell().textContent = currentDate.toLocaleDateString("ja-JP");
-  booths.forEach((booth) => {
-    header_row.insertCell().textContent = booth;
-  });
 }
 
 function create_initial_cell_data(times, booths) {
@@ -124,53 +116,50 @@ function update_cell_data(cell_data, schedules, times, booths) {
   });
 }
 
-function populate_table(table, times, booths, cell_data) {
-  for (let i = 0; i < times.length; i++) {
-    const row = table.insertRow();
-    const time_cell = row.insertCell();
-    time_cell.textContent = times[i];
+const times = generate_times();
+const booths = generate_booths(15);
+const cell_data = create_initial_cell_data(times, booths);
+update_cell_data(cell_data, schedules, times, booths);
 
-    for (let j = 0; j < booths.length; j++) {
-      const cell_data_item = cell_data[i][j];
-      if (cell_data_item !== undefined) {
-        const cell = row.insertCell();
-        if (cell_data_item) {
-          cell.textContent = cell_data_item.text;
-          cell.setAttribute("data-time", times[i]);
-          cell.setAttribute("data-booth", `ブース${j + 1}`);
-          cell.setAttribute("data-event", cell_data_item.text);
-          cell.setAttribute("data-duration", cell_data_item.rowspan);
-          if (cell_data_item.rowspan > 1) {
-            cell.rowSpan = cell_data_item.rowspan;
+const currentDate = new Date();
+---
+
+<table id="timeBoothTable">
+  <thead>
+    <tr>
+      <th>{currentDate.toLocaleDateString("ja-JP")}</th>
+      {booths.map((booth) => (
+        <th>{booth}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {times.map((time, i) => (
+      <tr>
+        <td>{time}</td>
+        {booths.map((booth, j) => {
+          const cell_data_item = cell_data[i][j];
+          if (cell_data_item !== undefined) {
+            return (
+              <td
+                rowSpan={cell_data_item?.rowspan || 1}
+                colSpan={cell_data_item?.colspan || 1}
+                class:list={[
+                  cell_data_item?.colspan > 1 && "band",
+                  !cell_data_item?.text && "break",
+                ]}
+                data-time={time}
+                data-booth={booth}
+                data-event={cell_data_item?.text}
+                data-duration={cell_data_item?.rowspan}
+              >
+                {cell_data_item?.text}
+              </td>
+            );
           }
-          if (cell_data_item.colspan > 1) {
-            cell.colSpan = cell_data_item.colspan;
-            cell.classList.add("band");
-          }
-        }
-      }
-    }
-
-    Array.from(row.cells).forEach((cell) => {
-      if (!cell.textContent) {
-        cell.classList.add("break");
-      }
-    });
-  }
-}
-
-function create_table() {
-  const times = generate_times();
-  const booths = generate_booths(15);
-  const table = document.getElementById("timeBoothTable");
-
-  create_header_row(table, booths);
-
-  const cell_data = create_initial_cell_data(times, booths);
-
-  update_cell_data(cell_data, schedules, times, booths);
-
-  populate_table(table, times, booths, cell_data);
-}
-
-create_table();
+          return null;
+        })}
+      </tr>
+    ))}
+  </tbody>
+</table>
