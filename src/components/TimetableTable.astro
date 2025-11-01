@@ -1,13 +1,20 @@
 ---
 import schedules from "../utils/schedules.js";
 
+interface ScheduleItem {
+  time: string;
+  booth: number;
+  value: string;
+  horizontal?: boolean;
+}
+
 /**
  * スケジュールデータからタイムテーブル描画用のデータを生成します。
- * @param {Array<Object>} schedulesData スケジュールの配列
+ * @param {ScheduleItem[]} scheduleItems スケジュールの配列
  * @param {number} boothCount ブースの数
  * @returns {{times: string[], booths: string[], cellData: Array<Array<Object|null|undefined>>}}
  */
-function processTimetableData(schedulesData: any[], boothCount: number) {
+function processTimetableData(scheduleItems: ScheduleItem[], boothCount: number) {
   // 時間のスロットを生成 (10:00 - 19:00, 15分間隔)
   const times: string[] = [];
   for (let hour = 10; hour <= 19; hour++) {
@@ -28,7 +35,7 @@ function processTimetableData(schedulesData: any[], boothCount: number) {
   );
   const usedCells = new Set();
 
-  schedulesData.forEach((item) => {
+  scheduleItems.forEach((item) => {
     const rowIndex = times.indexOf(item.time);
     const colIndex = item.booth - 1;
 
@@ -48,7 +55,7 @@ function processTimetableData(schedulesData: any[], boothCount: number) {
     let rowspan = 1;
     for (let i = rowIndex + 1; i < times.length; i++) {
       if (
-        schedulesData.some(
+        scheduleItems.some(
           (d) =>
             d.time === times[i] &&
             d.booth === item.booth &&
@@ -80,7 +87,7 @@ function processTimetableData(schedulesData: any[], boothCount: number) {
       let horizontalRowspan = 1;
       for (let i = rowIndex + 1; i < times.length; i++) {
         if (
-          schedulesData.some(
+          scheduleItems.some(
             (d) =>
               d.time === times[i] && d.value === item.value && d.horizontal,
           )
@@ -101,7 +108,7 @@ function processTimetableData(schedulesData: any[], boothCount: number) {
   return { times, booths, cellData };
 }
 
-const { times, booths, cellData } = processTimetableData(schedules, 15);
+const { times, booths, cellData } = processTimetableData(scheduleItems, 15);
 const currentDate = new Date();
 ---
 
