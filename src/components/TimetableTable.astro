@@ -1,5 +1,5 @@
 ---
-import schedules from "../utils/schedules.js";
+import scheduleItems from "../utils/schedules.js";
 
 interface ScheduleItem {
   time: string;
@@ -14,7 +14,10 @@ interface ScheduleItem {
  * @param {number} boothCount ブースの数
  * @returns {{times: string[], booths: string[], cellData: Array<Array<Object|null|undefined>>}}
  */
-function processTimetableData(scheduleItems: ScheduleItem[], boothCount: number) {
+function processTimetableData(
+  scheduleItems: ScheduleItem[],
+  boothCount: number,
+) {
   // 時間のスロットを生成 (10:00 - 19:00, 15分間隔)
   const times: string[] = [];
   for (let hour = 10; hour <= 19; hour++) {
