@@ -1,126 +1,107 @@
 ---
 import schedules from "../utils/schedules.js";
 
-function generate_times() {
-  const times = [];
+/**
+ * スケジュールデータからタイムテーブル描画用のデータを生成します。
+ * @param {Array<Object>} schedulesData スケジュールの配列
+ * @param {number} boothCount ブースの数
+ * @returns {{times: string[], booths: string[], cellData: Array<Array<Object|null|undefined>>}}
+ */
+function processTimetableData(schedulesData: any[], boothCount: number) {
+  // 時間のスロットを生成 (10:00 - 19:00, 15分間隔)
+  const times: string[] = [];
   for (let hour = 10; hour <= 19; hour++) {
     for (let minute = 0; minute < 60; minute += 15) {
       if (hour === 19 && minute > 0) break;
       times.push(
-        `${hour.toString().padStart(2, "0")}:${minute
-          .toString()
-          .padStart(2, "0")}`
+        `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`,
       );
     }
   }
-  return times;
-}
 
-function generate_booths(count) {
-  return Array.from({ length: count }, (_, i) => `ブース${i + 1}`);
-}
+  // ブース名を生成
+  const booths = Array.from({ length: boothCount }, (_, i) => `ブース${i + 1}`);
 
-function create_initial_cell_data(times, booths) {
-  return Array.from({ length: times.length }, () =>
-    Array(booths.length).fill(null)
+  // セルデータを初期化
+  const cellData = Array.from({ length: times.length }, () =>
+    Array(booths.length).fill(null),
   );
-}
+  const usedCells = new Set();
 
-function update_cell_data(cell_data, schedules, times, booths) {
-  const used_cells = new Set();
+  schedulesData.forEach((item) => {
+    const rowIndex = times.indexOf(item.time);
+    const colIndex = item.booth - 1;
 
-  schedules.forEach((item) => {
-    const row_index = times.indexOf(item.time);
-    const col_index = item.booth - 1;
-    const cell_key = `${row_index},${col_index}`;
+    if (rowIndex === -1 || colIndex < 0 || colIndex >= booths.length) return;
 
-    if (!used_cells.has(cell_key)) {
-      cell_data[row_index][col_index] = {
-        text: item.value,
-        rowspan: 1,
-        colspan: 1,
-      };
-      used_cells.add(cell_key);
+    const cellKey = `${rowIndex},${colIndex}`;
+    if (usedCells.has(cellKey)) return;
 
-      // 縦方向の結合をチェック
-      let rowspan = 1;
-      for (let i = row_index + 1; i < times.length; i++) {
+    cellData[rowIndex][colIndex] = {
+      text: item.value,
+      rowspan: 1,
+      colspan: 1,
+    };
+    usedCells.add(cellKey);
+
+    // 縦方向の結合 (rowspan) を計算
+    let rowspan = 1;
+    for (let i = rowIndex + 1; i < times.length; i++) {
+      if (
+        schedulesData.some(
+          (d) =>
+            d.time === times[i] &&
+            d.booth === item.booth &&
+            d.value === item.value,
+        )
+      ) {
+        usedCells.add(`${i},${colIndex}`);
+        rowspan++;
+      } else {
+        break;
+      }
+    }
+    if (rowspan > 1) {
+      cellData[rowIndex][colIndex].rowspan = rowspan;
+      for (let i = 1; i < rowspan; i++) {
+        cellData[rowIndex + i][colIndex] = undefined;
+      }
+    }
+
+    // 横方向の結合 (colspan) を計算
+    if (item.horizontal) {
+      cellData[rowIndex][colIndex].colspan = booths.length;
+      for (let j = 0; j < booths.length; j++) {
+        if (j !== colIndex) cellData[rowIndex][j] = undefined;
+        usedCells.add(`${rowIndex},${j}`);
+      }
+
+      // 横方向結合時の縦方向結合 (rowspan) も考慮
+      let horizontalRowspan = 1;
+      for (let i = rowIndex + 1; i < times.length; i++) {
         if (
-          schedules.some(
+          schedulesData.some(
             (d) =>
-              d.time === times[i] &&
-              d.booth === item.booth &&
-              d.value === item.value
+              d.time === times[i] && d.value === item.value && d.horizontal,
           )
         ) {
-          const existing_cell_key = `${i},${col_index}`;
-          if (used_cells.has(existing_cell_key)) {
-            used_cells.delete(existing_cell_key);
+          horizontalRowspan++;
+          for (let j = 0; j < booths.length; j++) {
+            cellData[i][j] = undefined;
+            usedCells.add(`${i},${j}`);
           }
-          rowspan++;
-          used_cells.add(existing_cell_key);
         } else {
           break;
         }
       }
-      if (rowspan > 1) {
-        cell_data[row_index][col_index].rowspan = rowspan;
-        for (let i = 1; i < rowspan; i++) {
-          cell_data[row_index + i][col_index] = undefined;
-        }
-      }
-
-      // 横方向の結合をチェック
-      if (item.horizontal) {
-        let colspan = booths.length;
-        for (let j = 0; j < booths.length; j++) {
-          const existing_cell_key = `${row_index},${j}`;
-          if (used_cells.has(existing_cell_key)) {
-            used_cells.delete(existing_cell_key);
-          }
-          if (j !== col_index) {
-            cell_data[row_index][j] = undefined;
-          }
-          used_cells.add(existing_cell_key);
-        }
-
-        // 縦方向の結合も考慮
-        let additional_rowspan = 1;
-        for (let i = row_index + 1; i < times.length; i++) {
-          if (
-            schedules.some(
-              (d) =>
-                d.time === times[i] && d.value === item.value && d.horizontal
-            )
-          ) {
-            additional_rowspan++;
-            for (let j = 0; j < booths.length; j++) {
-              const existing_cell_key = `${i},${j}`;
-              if (used_cells.has(existing_cell_key)) {
-                used_cells.delete(existing_cell_key);
-              }
-              used_cells.add(existing_cell_key);
-              if (j !== col_index) {
-                cell_data[i][j] = undefined;
-              }
-            }
-          } else {
-            break;
-          }
-        }
-
-        cell_data[row_index][col_index].colspan = colspan;
-        cell_data[row_index][col_index].rowspan = additional_rowspan;
-      }
+      cellData[rowIndex][colIndex].rowspan = horizontalRowspan;
     }
   });
+
+  return { times, booths, cellData };
 }
 
-const times = generate_times();
-const booths = generate_booths(15);
-const cell_data = create_initial_cell_data(times, booths);
-update_cell_data(cell_data, schedules, times, booths);
-
+const { times, booths, cellData } = processTimetableData(schedules, 15);
 const currentDate = new Date();
 ---
 
@@ -128,38 +109,37 @@ const currentDate = new Date();
   <thead>
     <tr>
       <th>{currentDate.toLocaleDateString("ja-JP")}</th>
-      {booths.map((booth) => (
-        <th>{booth}</th>
-      ))}
+      {booths.map((booth) => <th>{booth}</th>)}
     </tr>
   </thead>
   <tbody>
-    {times.map((time, i) => (
-      <tr>
-        <td>{time}</td>
-        {booths.map((booth, j) => {
-          const cell_data_item = cell_data[i][j];
-          if (cell_data_item !== undefined) {
-            return (
-              <td
-                rowSpan={cell_data_item?.rowspan || 1}
-                colSpan={cell_data_item?.colspan || 1}
-                class:list={[
-                  cell_data_item?.colspan > 1 && "band",
-                  !cell_data_item?.text && "break",
-                ]}
-                data-time={time}
-                data-booth={booth}
-                data-event={cell_data_item?.text}
-                data-duration={cell_data_item?.rowspan}
-              >
-                {cell_data_item?.text}
-              </td>
-            );
-          }
-          return null;
-        })}
-      </tr>
-    ))}
+    {
+      times.map((time, i) => (
+        <tr>
+          <td>{time}</td>
+          {cellData[i].map((cell, j) => {
+            if (cell !== undefined) {
+              return (
+                <td
+                  rowspan={cell?.rowspan || 1}
+                  colspan={cell?.colspan || 1}
+                  class:list={[
+                    cell?.colspan > 1 && "band",
+                    !cell?.text && "break",
+                  ]}
+                  data-time={time}
+                  data-booth={booths[j]}
+                  data-event={cell?.text}
+                  data-duration={cell?.rowspan}
+                >
+                  {cell?.text}
+                </td>
+              );
+            }
+            return null;
+          })}
+        </tr>
+      ))
+    }
   </tbody>
 </table>
