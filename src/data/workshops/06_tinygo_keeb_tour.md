@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "sago35 (さご)"
-  icon: "https://pbs.twimg.com/profile_images/1219630784/profile_400x400.png"
+  avatar: "https://pbs.twimg.com/profile_images/1219630784/profile_400x400.png"
   organization: "TinyGo Keeb"
   profile: >
     日本で一番 TinyGo を書いている人。
