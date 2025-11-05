@@ -1,5 +1,14 @@
 ---
-const { name, avatar, organization, profile } = Astro.props;
+import { withBase } from "../utils/withBase";
+
+const { name, avatar: _avatar, organization, profile } = Astro.props;
+
+const avatar = (() => {
+  if (_avatar.startsWith("http")) {
+    return _avatar;
+  }
+  return withBase(`avatars/${_avatar}`);
+})()
 ---
 
 <div class="flex flex-col gap-4">
