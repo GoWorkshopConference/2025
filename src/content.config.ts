@@ -3,6 +3,12 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const staff = defineCollection({
+  schema: z.object({
+    name: z.string(),
+    avatar: z.string().url().optional(),
+    link: z.string().url(),
+    organization: z.string().optional(),
+  }),
   loader: glob({ pattern: "*.json", base: "src/data/staff" }),
 });
 
