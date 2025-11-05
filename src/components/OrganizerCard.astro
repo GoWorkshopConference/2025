@@ -1,5 +1,14 @@
 ---
-const { name, icon, organization, profile } = Astro.props;
+import { withBase } from "../utils/withBase";
+
+const { name, icon: _icon, organization, profile } = Astro.props;
+const defaultAvatar = withBase("/default_avatar.svg");
+
+const icon = _icon
+  ? _icon.startsWith("http")
+    ? _icon
+    : withBase(`avatars/${_icon}`)
+  : defaultAvatar;
 ---
 
 <div class="flex flex-col gap-4">

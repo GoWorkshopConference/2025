@@ -12,7 +12,7 @@ const workshops = defineCollection({
     isGuest: z.boolean().optional(),
     organizer: z.object({
       name: z.string(),
-      icon: z.string().url(),
+      icon: z.string(),
       organization: z.string().optional(),
       profile: z.string(),
     }),
