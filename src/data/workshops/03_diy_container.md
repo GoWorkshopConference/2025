@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "Takuto Nagami"
-  icon: "https://github.com/logica0419.png"
+  avatar: "https://github.com/logica0419.png"
   profile: >
     千葉工業大学 情報科学部 情報ネットワーク学科 学士4年。クラウドプラットフォームの開発に携わるソフトウェアエンジニアを目指し、日々研鑽を積んでいる。
     日本Goコミュニティの海外進出を手助けするプロジェクト「Gophers EX」主催。海外カンファレンスでの英語登壇経験を活かし、海外への挑戦を妨げる言語・メンタルの壁を取り除くべく日々奮闘中。

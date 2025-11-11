@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "micchie"
-  icon: "https://github.com/mi-bear.png"
+  avatar: "https://github.com/mi-bear.png"
   organization: "Women Who Go Tokyo & TinyGo Keeb"
   profile: >
     ものをつくるのが大好きな Gopher。強火推し活に身を投じていて音楽も大好き！

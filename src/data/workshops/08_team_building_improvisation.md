@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "ysaito"
-  icon: "https://github.com/ysaito8015.png"
+  avatar: "https://github.com/ysaito8015.png"
   profile: "全国ツアーするヒト"
 ---
 

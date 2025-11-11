@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "chihiro"
-  icon: "https://pbs.twimg.com/profile_images/1766876951510384641/mYACvJiR_400x400.jpg"
+  avatar: "https://pbs.twimg.com/profile_images/1766876951510384641/mYACvJiR_400x400.jpg"
   organization: "GoConnect"
   profile: "東京でほぼ月イチで勉強会をやってます。"
 ---

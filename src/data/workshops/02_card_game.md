@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "Sendai.go 瀬上祐匡"
-  icon: "https://pbs.twimg.com/profile_images/1951452891304345600/HWCkBlFE_400x400.jpg"
+  avatar: "https://pbs.twimg.com/profile_images/1951452891304345600/HWCkBlFE_400x400.jpg"
   organization: "Sendai.go"
   profile: "仙台在住エンジニア、毎月第１水曜、Sendai.goを実施してます。"
 ---

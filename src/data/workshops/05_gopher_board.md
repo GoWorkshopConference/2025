@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "satoken"
-  icon: "https://github.com/sat0ken.png"
+  avatar: "https://github.com/sat0ken.png"
   organization: "TinyGo Keeb"
   profile: "TinyGo Keebではリワーク班とTinyGo Keebook編集長を担当。好きなはんだごてのこてさきはK型。某スナックの常連。"
 ---

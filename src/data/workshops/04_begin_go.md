@@ -4,7 +4,7 @@ tags:
   - guest
 organizer:
   name: "Ryuji Iwata"
-  icon: "https://github.com/qt-luigi.png"
+  avatar: "https://github.com/qt-luigi.png"
   organization: "Okayama.go"
   profile: "2013年から趣味でGoを触り始め、日本のGoとコミュニティの立ち上げと普及に貢献しています。"
 ---
