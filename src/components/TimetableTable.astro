@@ -1,0 +1,155 @@
+---
+import scheduleItems from "../utils/schedules.js";
+
+interface ScheduleItem {
+  time: string;
+  booth: number;
+  value: string;
+  horizontal?: boolean;
+}
+
+/**
+ * スケジュールデータからタイムテーブル描画用のデータを生成します。
+ * @param {ScheduleItem[]} scheduleItems スケジュールの配列
+ * @param {number} boothCount ブースの数
+ * @returns {{times: string[], booths: string[], cellData: Array<Array<Object|null|undefined>>}}
+ */
+function processTimetableData(
+  scheduleItems: ScheduleItem[],
+  boothCount: number,
+) {
+  // 時間のスロットを生成 (10:00 - 19:00, 15分間隔)
+  const times: string[] = [];
+  for (let hour = 10; hour <= 19; hour++) {
+    for (let minute = 0; minute < 60; minute += 15) {
+      if (hour === 19 && minute > 0) break;
+      times.push(
+        `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`,
+      );
+    }
+  }
+
+  // ブース名を生成
+  const booths = Array.from({ length: boothCount }, (_, i) => `ブース${i + 1}`);
+
+  // セルデータを初期化
+  const cellData = Array.from({ length: times.length }, () =>
+    Array(booths.length).fill(null),
+  );
+  const usedCells = new Set();
+
+  scheduleItems.forEach((item) => {
+    const rowIndex = times.indexOf(item.time);
+    const colIndex = item.booth - 1;
+
+    if (rowIndex === -1 || colIndex < 0 || colIndex >= booths.length) return;
+
+    const cellKey = `${rowIndex},${colIndex}`;
+    if (usedCells.has(cellKey)) return;
+
+    cellData[rowIndex][colIndex] = {
+      text: item.value,
+      rowspan: 1,
+      colspan: 1,
+    };
+    usedCells.add(cellKey);
+
+    // 縦方向の結合 (rowspan) を計算
+    let rowspan = 1;
+    for (let i = rowIndex + 1; i < times.length; i++) {
+      if (
+        scheduleItems.some(
+          (d) =>
+            d.time === times[i] &&
+            d.booth === item.booth &&
+            d.value === item.value,
+        )
+      ) {
+        usedCells.add(`${i},${colIndex}`);
+        rowspan++;
+      } else {
+        break;
+      }
+    }
+    if (rowspan > 1) {
+      cellData[rowIndex][colIndex].rowspan = rowspan;
+      for (let i = 1; i < rowspan; i++) {
+        cellData[rowIndex + i][colIndex] = undefined;
+      }
+    }
+
+    // 横方向の結合 (colspan) を計算
+    if (item.horizontal) {
+      cellData[rowIndex][colIndex].colspan = booths.length;
+      for (let j = 0; j < booths.length; j++) {
+        if (j !== colIndex) cellData[rowIndex][j] = undefined;
+        usedCells.add(`${rowIndex},${j}`);
+      }
+
+      // 横方向結合時の縦方向結合 (rowspan) も考慮
+      let horizontalRowspan = 1;
+      for (let i = rowIndex + 1; i < times.length; i++) {
+        if (
+          scheduleItems.some(
+            (d) =>
+              d.time === times[i] && d.value === item.value && d.horizontal,
+          )
+        ) {
+          horizontalRowspan++;
+          for (let j = 0; j < booths.length; j++) {
+            cellData[i][j] = undefined;
+            usedCells.add(`${i},${j}`);
+          }
+        } else {
+          break;
+        }
+      }
+      cellData[rowIndex][colIndex].rowspan = horizontalRowspan;
+    }
+  });
+
+  return { times, booths, cellData };
+}
+
+const { times, booths, cellData } = processTimetableData(scheduleItems, 15);
+const currentDate = new Date();
+---
+
+<table id="timeBoothTable">
+  <thead>
+    <tr>
+      <th>{currentDate.toLocaleDateString("ja-JP")}</th>
+      {booths.map((booth) => <th>{booth}</th>)}
+    </tr>
+  </thead>
+  <tbody>
+    {
+      times.map((time, i) => (
+        <tr>
+          <td>{time}</td>
+          {cellData[i].map((cell, j) => {
+            if (cell !== undefined) {
+              return (
+                <td
+                  rowspan={cell?.rowspan || 1}
+                  colspan={cell?.colspan || 1}
+                  class:list={[
+                    cell?.colspan > 1 && "band",
+                    !cell?.text && "break",
+                  ]}
+                  data-time={time}
+                  data-booth={booths[j]}
+                  data-event={cell?.text}
+                  data-duration={cell?.rowspan}
+                >
+                  {cell?.text}
+                </td>
+              );
+            }
+            return null;
+          })}
+        </tr>
+      ))
+    }
+  </tbody>
+</table>

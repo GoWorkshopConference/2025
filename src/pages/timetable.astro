@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TimetableTable from "../components/TimetableTable.astro";
+---
+
+<Layout title="タイムテーブル">
+  <div class="table-container">
+    <TimetableTable />
+  </div>
+</Layout>
+
+<style is:global>
+  @import "../styles/timetable.css";
+</style>
