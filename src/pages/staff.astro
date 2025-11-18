@@ -3,9 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import StaffCard from "../components/StaffCard.astro";
 import { getCollection } from "astro:content";
 
-// TODO: スタッフのタイプを管理する
 const allStaff = await getCollection("staff");
-const coreStaff = allStaff.filter((s) => s.data.type === "core" || !s.data.type);
+const coreStaff = allStaff.filter((s) => s.data.type === "core");
 const dayStaff = allStaff.filter((s) => s.data.type === "day");
 ---
 
