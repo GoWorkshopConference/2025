@@ -1,165 +1,269 @@
 ---
-import schedules from "../utils/schedules.js";
+import { invariant } from "ts-invariant";
+import {
+  scheduleItems as _scheduleItems,
+  booths as _booths,
+  timeSlots as _timeSlots,
+} from "../utils/schedules.ts";
+import { withBase } from "../utils/withBase";
 
-function generate_times() {
-  const times = [];
-  for (let hour = 10; hour <= 19; hour++) {
-    for (let minute = 0; minute < 60; minute += 15) {
-      if (hour === 19 && minute > 0) break;
-      times.push(
-        `${hour.toString().padStart(2, "0")}:${minute
-          .toString()
-          .padStart(2, "0")}`
-      );
+/** タイムテーブルのtableを描画するためのデータ。nullは結合されたセルを表す。 */
+type TimeTable = (Cell | null)[][];
+
+/** タイムテーブルのtableのセルを表すデータ。
+ * typeが"event"の場合はイベント（ワークショップなど）を表し、"break"の場合は休憩を表す。 */
+type Cell =
+  | {
+      type: "event";
+      title: string;
+      rowspan: number;
+      colspan: number;
+      href: string | null;
     }
-  }
-  return times;
-}
+  | {
+      type: "break";
+    };
 
-function generate_booths(count) {
-  return Array.from({ length: count }, (_, i) => `ブース${i + 1}`);
-}
-
-function create_initial_cell_data(times, booths) {
-  return Array.from({ length: times.length }, () =>
-    Array(booths.length).fill(null)
+function buildTimeTable(
+  scheduleItems: typeof _scheduleItems,
+  booths: typeof _booths,
+  timeSlots: typeof _timeSlots,
+) {
+  const timeTable: TimeTable = Array.from({ length: timeSlots.length }, () =>
+    Array(booths.length).fill({ type: "break" }),
   );
-}
+  const usedCells = new Set<string>();
 
-function update_cell_data(cell_data, schedules, times, booths) {
-  const used_cells = new Set();
+  scheduleItems.forEach((item) => {
+    const startRowIndex = timeSlots.indexOf(item.startTime);
+    const endRowIndex = timeSlots.indexOf(item.endTime);
+    const colIndex = "fullspan" in item ? 0 : booths.indexOf(item.booth);
 
-  schedules.forEach((item) => {
-    const row_index = times.indexOf(item.time);
-    const col_index = item.booth - 1;
-    const cell_key = `${row_index},${col_index}`;
+    invariant(startRowIndex !== -1, `startRowIndex is -1 at ${item.startTime}`);
+    invariant(colIndex !== -1, `colIndex is -1 at ${item.startTime}`);
 
-    if (!used_cells.has(cell_key)) {
-      cell_data[row_index][col_index] = {
-        text: item.value,
-        rowspan: 1,
-        colspan: 1,
-      };
-      used_cells.add(cell_key);
+    const cellKey = `${startRowIndex},${colIndex}`;
+    if (usedCells.has(cellKey)) return;
 
-      // 縦方向の結合をチェック
-      let rowspan = 1;
-      for (let i = row_index + 1; i < times.length; i++) {
-        if (
-          schedules.some(
-            (d) =>
-              d.time === times[i] &&
-              d.booth === item.booth &&
-              d.value === item.value
-          )
-        ) {
-          const existing_cell_key = `${i},${col_index}`;
-          if (used_cells.has(existing_cell_key)) {
-            used_cells.delete(existing_cell_key);
-          }
-          rowspan++;
-          used_cells.add(existing_cell_key);
-        } else {
-          break;
+    // startTimeとendTimeの差からrowspanを計算
+    const rowspan = endRowIndex !== -1 ? endRowIndex - startRowIndex : 1;
+
+    const row = timeTable[startRowIndex];
+    invariant(row, `row is undefined at ${startRowIndex}`);
+    row[colIndex] = {
+      type: "event",
+      title: item.title,
+      rowspan,
+      colspan: 1,
+      href: "href" in item ? item.href : null,
+    };
+    usedCells.add(cellKey);
+
+    // rowspanが1より大きい場合、結合されるセルをnullに設定
+    for (let i = 1; i < rowspan; i++) {
+      const mergeRow = timeTable[startRowIndex + i];
+      invariant(mergeRow, `mergeRow is undefined at ${startRowIndex + i}`);
+      mergeRow[colIndex] = null;
+      usedCells.add(`${startRowIndex + i},${colIndex}`);
+    }
+
+    // 横方向の結合 (colspan) を計算
+    if ("fullspan" in item) {
+      const mainCell = row[colIndex];
+      invariant(
+        mainCell,
+        `mainCell is undefined at ${startRowIndex},${colIndex}`,
+      );
+      mainCell.colspan = booths.length;
+      for (let j = 0; j < booths.length; j++) {
+        if (j !== colIndex) {
+          row[j] = null;
+          usedCells.add(`${startRowIndex},${j}`);
         }
       }
-      if (rowspan > 1) {
-        cell_data[row_index][col_index].rowspan = rowspan;
-        for (let i = 1; i < rowspan; i++) {
-          cell_data[row_index + i][col_index] = undefined;
-        }
-      }
 
-      // 横方向の結合をチェック
-      if (item.horizontal) {
-        let colspan = booths.length;
+      // 横方向結合時の縦方向結合 (rowspan) も考慮
+      for (let i = 1; i < rowspan; i++) {
+        const mergeRow = timeTable[startRowIndex + i];
+        invariant(mergeRow, `mergeRow is undefined at ${startRowIndex + i}`);
         for (let j = 0; j < booths.length; j++) {
-          const existing_cell_key = `${row_index},${j}`;
-          if (used_cells.has(existing_cell_key)) {
-            used_cells.delete(existing_cell_key);
-          }
-          if (j !== col_index) {
-            cell_data[row_index][j] = undefined;
-          }
-          used_cells.add(existing_cell_key);
+          mergeRow[j] = null;
+          usedCells.add(`${startRowIndex + i},${j}`);
         }
-
-        // 縦方向の結合も考慮
-        let additional_rowspan = 1;
-        for (let i = row_index + 1; i < times.length; i++) {
-          if (
-            schedules.some(
-              (d) =>
-                d.time === times[i] && d.value === item.value && d.horizontal
-            )
-          ) {
-            additional_rowspan++;
-            for (let j = 0; j < booths.length; j++) {
-              const existing_cell_key = `${i},${j}`;
-              if (used_cells.has(existing_cell_key)) {
-                used_cells.delete(existing_cell_key);
-              }
-              used_cells.add(existing_cell_key);
-              if (j !== col_index) {
-                cell_data[i][j] = undefined;
-              }
-            }
-          } else {
-            break;
-          }
-        }
-
-        cell_data[row_index][col_index].colspan = colspan;
-        cell_data[row_index][col_index].rowspan = additional_rowspan;
       }
     }
   });
+
+  return timeTable;
 }
 
-const times = generate_times();
-const booths = generate_booths(15);
-const cell_data = create_initial_cell_data(times, booths);
-update_cell_data(cell_data, schedules, times, booths);
-
-const currentDate = new Date();
+const timeTable = buildTimeTable(_scheduleItems, _booths, _timeSlots);
 ---
 
-<table id="timeBoothTable">
-  <thead>
-    <tr>
-      <th>{currentDate.toLocaleDateString("ja-JP")}</th>
-      {booths.map((booth) => (
-        <th>{booth}</th>
-      ))}
-    </tr>
-  </thead>
-  <tbody>
-    {times.map((time, i) => (
+<style>
+  .table-container {
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  th,
+  td {
+    border: 1px solid #e5e7eb;
+    padding: 10px;
+    text-align: center;
+    min-width: 120px;
+    background-clip: padding-box;
+    background-color: #ffffff;
+  }
+
+  th {
+    color: #374151;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  td:first-child,
+  th:first-child {
+    position: sticky;
+    left: 0;
+    color: #374151;
+    z-index: 11;
+    border-right: 1px solid #e5e7eb;
+  }
+
+  tr {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  tr:first-child > td:not(:first-child) {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+  }
+
+  tr:last-child {
+    border-bottom: none;
+  }
+
+  .break {
+    background-color: #f3f4f6;
+    position: relative;
+    overflow: hidden;
+    color: #6b7280;
+  }
+
+  .break::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      315deg,
+      rgba(209, 213, 219, 0.3),
+      rgba(209, 213, 219, 0.3) 10px,
+      rgba(0, 0, 0, 0) 10px,
+      rgba(0, 0, 0, 0) 20px
+    );
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .band {
+    background-color: #e0f2fe;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 500;
+    color: #0c4a6e;
+  }
+
+  .cell-with-link {
+    position: relative;
+  }
+
+  .cell-link {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cell-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    th,
+    td {
+      padding: 5px;
+    }
+
+    th:first-child,
+    td:first-child {
+      min-width: 50px;
+    }
+  }
+</style>
+
+<div class="table-container">
+  <table>
+    <thead>
       <tr>
-        <td>{time}</td>
-        {booths.map((booth, j) => {
-          const cell_data_item = cell_data[i][j];
-          if (cell_data_item !== undefined) {
-            return (
-              <td
-                rowSpan={cell_data_item?.rowspan || 1}
-                colSpan={cell_data_item?.colspan || 1}
-                class:list={[
-                  cell_data_item?.colspan > 1 && "band",
-                  !cell_data_item?.text && "break",
-                ]}
-                data-time={time}
-                data-booth={booth}
-                data-event={cell_data_item?.text}
-                data-duration={cell_data_item?.rowspan}
-              >
-                {cell_data_item?.text}
-              </td>
-            );
-          }
-          return null;
-        })}
+        <th>2025/12/13</th>
+        {_booths.map((booth) => <th>{booth}</th>)}
       </tr>
-    ))}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {
+        timeTable.map((row, i) => (
+          <tr>
+            <td>{_timeSlots[i]}</td>
+            {row.map((cell) => {
+              if (cell === null) {
+                return null;
+              }
+              switch (cell.type) {
+                case "break":
+                  return <td class="break" />;
+                case "event": {
+                  const td = (
+                    <td
+                      rowspan={cell.rowspan}
+                      colspan={cell.colspan}
+                      class:list={[
+                        cell.colspan > 1 && "band",
+                        cell.href && "cell-with-link",
+                      ]}
+                    >
+                      {cell.href ? (
+                        <a href={withBase(cell.href)} class="cell-link">
+                          {cell.title}
+                        </a>
+                      ) : (
+                        cell.title
+                      )}
+                    </td>
+                  );
+                  return td;
+                }
+              }
+            })}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

@@ -18,6 +18,7 @@
     "astro": "^5.7.10",
     "remark-breaks": "^4.0.0",
     "tailwindcss": "^4.1.4",
+    "ts-invariant": "^0.10.3",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
