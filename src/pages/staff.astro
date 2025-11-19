@@ -3,24 +3,49 @@ import Layout from "../layouts/Layout.astro";
 import StaffCard from "../components/StaffCard.astro";
 import { getCollection } from "astro:content";
 
-const staff = await getCollection("staff");
+const allStaff = await getCollection("staff");
+const coreStaff = allStaff.filter((s) => s.data.type === "core");
+const dayStaff = allStaff.filter((s) => s.data.type === "day");
 ---
 
 <Layout title="Staff">
   <section class="flex flex-col items-center">
     <h1 class="mb-8 text-4xl font-bold">Staff</h1>
     <div class="mb-8">スタッフ一覧は順次更新中です。</div>
-    <div class="grid md:grid-cols-3 gap-12 mb-12">
-      {
-        staff.map((staff) => (
-          <StaffCard
-            name={staff.data.name}
-            organization={staff.data.organization}
-            avatar={staff.data.avatar}
-            link={staff.data.link}
-          />
-        ))
-      }
-    </div>
+    <h2 class="mb-8 text-2xl font-bold">コアスタッフ</h2>
+    {coreStaff.length === 0 ? (
+      <div class="mb-12">順次掲載予定です</div>
+    ) : (
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        {
+          coreStaff.map((staff) => (
+            <StaffCard
+              name={staff.data.name}
+              organization={staff.data.organization}
+              avatar={staff.data.avatar}
+              link={staff.data.link}
+            />
+          ))
+        }
+      </div>
+    )}
+
+    <h2 class="mb-8 text-2xl font-bold">当日スタッフ</h2>
+    {dayStaff.length === 0 ? (
+      <div class="mb-12">順次掲載予定です</div>
+    ) : (
+      <div class="grid md:grid-cols-3 gap-12 mb-12">
+        {
+          dayStaff.map((staff) => (
+            <StaffCard
+              name={staff.data.name}
+              organization={staff.data.organization}
+              avatar={staff.data.avatar}
+              link={staff.data.link}
+            />
+          ))
+        }
+      </div>
+    )}
   </section>
 </Layout>

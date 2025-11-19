@@ -8,6 +8,7 @@ const staff = defineCollection({
     avatar: z.string().url().optional(),
     link: z.string().url(),
     organization: z.string().optional(),
+    type: z.enum(["core", "day"]).optional().default("core"),
   }),
   loader: glob({ pattern: "*.json", base: "src/data/staff" }),
 });
