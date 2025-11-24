@@ -1,5 +1,6 @@
 ---
 title: "Gopher のためのチームビルディングするインプロワークショップ"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375453"
 tags:
   - guest
 organizer:

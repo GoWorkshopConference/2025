@@ -1,5 +1,6 @@
 ---
 title: "Gopher のための「自由な話し合い」ワークショップ"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375458"
 tags:
   - guest
 organizer:

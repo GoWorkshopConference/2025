@@ -1,5 +1,6 @@
 ---
 title: "Goカードゲームで遊ぼう"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375455"
 tags:
   - guest
 organizer:

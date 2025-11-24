@@ -1,5 +1,6 @@
 ---
 title: "TinyGo Keeb Tour at GWC"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375448"
 tags:
   - guest
 organizer:

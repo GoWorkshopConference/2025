@@ -1,5 +1,6 @@
 ---
 title: "Go Doc Comments 完全理解ハンズオン"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375460"
 organizer:
   name: "KOBE.go"
   avatar: "kobego.png"
