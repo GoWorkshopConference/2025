@@ -1,8 +1,6 @@
 ---
 title: "TinyGo Keeb Tour at GWC"
 connpassUrl: "https://go-workshop-conference.connpass.com/event/375448"
-tags:
-  - guest
 organizer:
   name: "sago35 (さご)"
   avatar: "https://pbs.twimg.com/profile_images/1219630784/profile_400x400.png"

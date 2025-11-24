@@ -1,8 +1,6 @@
 ---
 title: "Gopher のためのチームビルディングするインプロワークショップ"
 connpassUrl: "https://go-workshop-conference.connpass.com/event/375453"
-tags:
-  - guest
 organizer:
   name: "ysaito"
   avatar: "https://github.com/ysaito8015.png"

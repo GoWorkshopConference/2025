@@ -1,8 +1,6 @@
 ---
 title: "Gopherくん基板を作ってTinyGoで遊ぼう"
 connpassUrl: "https://go-workshop-conference.connpass.com/event/375459"
-tags:
-  - guest
 organizer:
   name: "satoken"
   avatar: "https://github.com/sat0ken.png"
