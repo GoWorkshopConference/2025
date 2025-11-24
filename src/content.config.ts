@@ -16,7 +16,6 @@ const staff = defineCollection({
 const workshops = defineCollection({
   schema: z.object({
     title: z.string(),
-    isGuest: z.boolean().optional(),
     connpassUrl: z.string().url(),
     organizer: z.object({
       name: z.string(),

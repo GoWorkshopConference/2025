@@ -1,8 +1,6 @@
 ---
 title: "Gopher のための「自由な話し合い」ワークショップ"
 connpassUrl: "https://go-workshop-conference.connpass.com/event/375458"
-tags:
-  - guest
 organizer:
   name: "chihiro"
   avatar: "https://pbs.twimg.com/profile_images/1766876951510384641/mYACvJiR_400x400.jpg"

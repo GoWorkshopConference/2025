@@ -1,8 +1,6 @@
 ---
 title: "はじめてのGo言語教室"
 connpassUrl: "https://go-workshop-conference.connpass.com/event/375454"
-tags:
-  - guest
 organizer:
   name: "Ryuji Iwata"
   avatar: "https://github.com/qt-luigi.png"
