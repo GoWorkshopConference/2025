@@ -1,5 +1,6 @@
 ---
 title: "低レベルコンテナランタイム自作講座 ～コンテナ技術の地盤を理解する～"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375445"
 tags:
   - guest
 organizer:

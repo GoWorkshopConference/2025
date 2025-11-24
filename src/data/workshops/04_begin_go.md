@@ -1,5 +1,6 @@
 ---
 title: "はじめてのGo言語教室"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375454"
 tags:
   - guest
 organizer:
@@ -14,4 +15,3 @@ organizer:
 CLIのタイピングゲームをGoでプログラミングしていき、解説と演習を繰り返すことでGoとプログラミングの「はじめの一歩」を学ぶことができます。
 
 最新のGoとお気に入りのテキストエディタが入ったノートパソコンを持参して頂ければ、どなたでも参加して頂けます。
-　

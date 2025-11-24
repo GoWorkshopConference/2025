@@ -3,7 +3,7 @@ import { type CollectionEntry } from "astro:content";
 import { withBase } from "../utils/withBase";
 import OrganizerCard from "./OrganizerCard.astro";
 
-type Props = CollectionEntry<"workshops">["data"] & {
+type Props = Omit<CollectionEntry<"workshops">["data"], "connpassUrl"> & {
   slug: string;
 };
 
