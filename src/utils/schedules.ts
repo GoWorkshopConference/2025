@@ -141,12 +141,6 @@ const scheduleItems: ScheduleItem[] = [
     booth: "ブースA",
     title: "シャッフルランチ",
   },
-  {
-    startTime: "14:00",
-    endTime: "15:30",
-    booth: "ブースA",
-    title: "シャッフルランチ（延長可）",
-  },
   /// ブースB
   {
     startTime: "10:30",
