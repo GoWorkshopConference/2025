@@ -17,6 +17,11 @@ if (!entry) {
   throw new Error(`Workshop not found: ${workshop.id}`);
 }
 const { Content } = await render(entry);
+
+if (entry.data.connpassUrl) {
+  return Astro.redirect(entry.data.connpassUrl);
+}
+
 ---
 
 <Layout title={workshop.data.title}>
