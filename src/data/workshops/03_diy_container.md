@@ -1,7 +1,6 @@
 ---
 title: "低レベルコンテナランタイム自作講座 ～コンテナ技術の地盤を理解する～"
-tags:
-  - guest
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375445"
 organizer:
   name: "Takuto Nagami"
   avatar: "https://github.com/logica0419.png"

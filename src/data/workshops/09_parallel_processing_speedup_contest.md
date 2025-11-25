@@ -1,5 +1,6 @@
 ---
 title: "並行処理スピードアップコンテスト"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375456"
 organizer:
   name: "kuro"
   avatar: "https://pbs.twimg.com/profile_images/1489962542898495488/kft0Ycs1_400x400.jpg"

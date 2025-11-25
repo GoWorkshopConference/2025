@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       # 必要なパッケージをインストールして、pnpm run buildを実行する
       - uses: withastro/action@v5

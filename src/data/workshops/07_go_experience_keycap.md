@@ -1,7 +1,6 @@
 ---
 title: "はじめての Go 体験！そしてあなたのキーキャップがおしゃれになる！"
-tags:
-  - guest
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375449"
 organizer:
   name: "micchie"
   avatar: "https://github.com/mi-bear.png"

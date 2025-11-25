@@ -1,7 +1,6 @@
 ---
 title: "Goカードゲームで遊ぼう"
-tags:
-  - guest
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375455"
 organizer:
   name: "Sendai.go 瀬上祐匡"
   avatar: "https://pbs.twimg.com/profile_images/1951452891304345600/HWCkBlFE_400x400.jpg"

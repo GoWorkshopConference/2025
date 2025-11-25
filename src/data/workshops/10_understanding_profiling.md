@@ -1,5 +1,6 @@
 ---
 title: "動かして理解する適材適所のプロファイリング"
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375457"
 organizer:
   name: "task4233"
   avatar: "https://github.com/task4233.png"
