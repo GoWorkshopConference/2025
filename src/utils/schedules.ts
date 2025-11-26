@@ -11,7 +11,7 @@ const scheduleItems: ScheduleItem[] = [
   /// 午前の部
   {
     startTime: "10:30",
-    endTime: "12:00",
+    endTime: "12:30",
     booth: "大スペース1",
     title:
       "低レベルコンテナランタイム自作講座 ～コンテナ技術の地盤を理解する～",
@@ -19,35 +19,35 @@ const scheduleItems: ScheduleItem[] = [
   },
   {
     startTime: "10:30",
-    endTime: "12:00",
+    endTime: "12:30",
     booth: "大スペース2",
     title: "Gopher のためのチームビルディングするインプロワークショップ",
     href: "/workshops/08_team_building_improvisation",
   },
   {
     startTime: "10:30",
-    endTime: "12:00",
+    endTime: "12:30",
     booth: "中スペース1",
     title: "TinyGo Keeb Tour at GWC",
     href: "/workshops/06_tinygo_keeb_tour",
   },
   {
     startTime: "10:30",
-    endTime: "12:00",
+    endTime: "12:30",
     booth: "中スペース2",
     title: "はじめてのGo言語教室",
     href: "/workshops/04_begin_go",
   },
   {
     startTime: "10:30",
-    endTime: "12:00",
+    endTime: "12:30",
     booth: "中スペース3",
     title: "Goカードゲームで遊ぼう",
     href: "/workshops/02_card_game",
   },
   {
     startTime: "10:30",
-    endTime: "12:00",
+    endTime: "12:30",
     booth: "中スペース4",
     title: "並行処理スピードアップコンテスト",
     href: "/workshops/09_parallel_processing_speedup_contest",
