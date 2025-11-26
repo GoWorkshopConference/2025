@@ -75,7 +75,7 @@ const scheduleItems: ScheduleItem[] = [
     endTime: "17:45",
     booth: "大スペース1",
     title: "動かして理解する適材適所のプロファイリング",
-    href: "/workshops/01_profiling",
+    href: "/workshops/10_understanding_profiling",
   },
   {
     startTime: "15:45",
