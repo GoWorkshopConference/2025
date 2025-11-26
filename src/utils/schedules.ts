@@ -102,7 +102,8 @@ const scheduleItems: ScheduleItem[] = [
     startTime: "15:45",
     endTime: "17:45",
     booth: "中スペース3",
-    title: "調整中",
+    title: "Go with AI",
+    href: "/workshops/12_go_with_ai",
   },
 
   // ブースコンテンツ
