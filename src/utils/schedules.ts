@@ -132,6 +132,7 @@ const scheduleItems: ScheduleItem[] = [
     booth: "ブースコンテンツ4",
     title: "ブースコンテンツ",
   },
+  */
 
   // 各種企画
   /// ブースA
@@ -152,7 +153,6 @@ const scheduleItems: ScheduleItem[] = [
   { startTime: "10:30", endTime: "14:00", booth: "ブースC", title: "Ebiten" },
   { startTime: "14:00", endTime: "15:30", booth: "ブースC", title: "即席LT" },
   { startTime: "15:30", endTime: "17:45", booth: "ブースC", title: "Ebiten" },
-  */
 
   // クロージングなど
   {
@@ -191,10 +191,10 @@ const booths = [
   "ブースコンテンツ2",
   "ブースコンテンツ3",
   "ブースコンテンツ4",
+  */
   "ブースA",
   "ブースB",
   "ブースC",
-  */
 ] as const;
 
 // 10:00から18:00までの15分間隔の時間スロット
