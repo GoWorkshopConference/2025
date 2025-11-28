@@ -1,7 +1,6 @@
 ---
 title: "Go with AI"
-# TODO: connpassページが公開されたらURLを入力する
-# connpassUrl: "..."
+connpassUrl: "https://go-workshop-conference.connpass.com/event/375461/"
 organizer:
   name: "tenntenn"
   avatar: "https://tenntenn.dev/images/tenntenn.png"
