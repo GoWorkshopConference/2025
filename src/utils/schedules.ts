@@ -21,8 +21,8 @@ const scheduleItems: ScheduleItem[] = [
     startTime: "10:30",
     endTime: "12:30",
     booth: "B",
-    title: "Gopher のためのチームビルディングするインプロワークショップ",
-    href: "/workshops/08_team_building_improvisation",
+    title: "Gopher のための「自由な話し合い」ワークショップ",
+    href: "/workshops/01_ost",
   },
   {
     startTime: "10:30",
@@ -81,8 +81,8 @@ const scheduleItems: ScheduleItem[] = [
     startTime: "15:45",
     endTime: "17:45",
     booth: "B",
-    title: "Gopher のための「自由な話し合い」ワークショップ",
-    href: "/workshops/01_ost",
+    title: "Gopher のためのチームビルディングするインプロワークショップ",
+    href: "/workshops/08_team_building_improvisation",
   },
   {
     startTime: "15:45",
