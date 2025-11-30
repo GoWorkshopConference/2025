@@ -157,9 +157,9 @@ const scheduleItems: ScheduleItem[] = [
     title: "ジェスチャーゲーム",
   },
   /// ブースC
-  { startTime: "10:30", endTime: "14:00", booth: "ブースC", title: "Ebiten" },
-  { startTime: "14:00", endTime: "15:30", booth: "ブースC", title: "即席LT" },
-  { startTime: "15:30", endTime: "17:45", booth: "ブースC", title: "Ebiten" },
+  { startTime: "10:30", endTime: "14:00", booth: "ブースC", title: "Go製のゲーム展示・ゲーム作りブース" },
+  { startTime: "14:00", endTime: "15:30", booth: "ブースC", title: "ゆるLT会" },
+  { startTime: "15:30", endTime: "17:45", booth: "ブースC", title: "Go製のゲーム展示・ゲーム作りブース" },
 
   // クロージングなど
   {
