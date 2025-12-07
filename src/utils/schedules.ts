@@ -107,39 +107,34 @@ const scheduleItems: ScheduleItem[] = [
   },
 
   // ブースコンテンツ
-  // ブースコンテンツの詳細が決まるまで1列にまとめておく
-  {
-    startTime: "14:00",
-    endTime: "15:30",
-    booth: "ブースコンテンツ",
-    title: "ブースコンテンツ",
-  },
-  /*
   {
     startTime: "14:00",
     endTime: "15:30",
     booth: "ブースコンテンツ1",
-    title: "ブースコンテンツ",
+    title: "TinyGo Keeb",
+    href: "/booths/01_tinygo_keeb",
   },
   {
     startTime: "14:00",
     endTime: "15:30",
     booth: "ブースコンテンツ2",
-    title: "ブースコンテンツ",
+    title: "TinyGoが動くGopherくん基板の展示",
+    href: "/booths/02_tinygo_gopher_board",
   },
   {
     startTime: "14:00",
     endTime: "15:30",
     booth: "ブースコンテンツ3",
-    title: "ブースコンテンツ",
+    title: "Coding Kubernetes",
+    href: "/booths/03_coding_kubernetes",
   },
   {
     startTime: "14:00",
     endTime: "15:30",
     booth: "ブースコンテンツ4",
-    title: "ブースコンテンツ",
+    title: "DIYハンコンのデモ",
+    href: "/booths/04_diy_handle_controller",
   },
-  */
 
   // 各種企画
   /// ブースA
@@ -193,14 +188,10 @@ const booths = [
   "D",
   "E",
   "F",
-  // ブースコンテンツの詳細が決まるまで1列にまとめておく
-  "ブースコンテンツ",
-  /*
   "ブースコンテンツ1",
   "ブースコンテンツ2",
   "ブースコンテンツ3",
   "ブースコンテンツ4",
-  */
   "ブースA",
   "ブースB",
   "ブースC",
