@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BoothCard from "../components/BoothCard.astro";
+import { getCollection } from "astro:content";
+
+const booths = await getCollection("booths");
+booths.sort((a, b) => (a.id > b.id ? 1 : -1));
+---
+
+<Layout title="Booths">
+  <main>
+    <h1 class="text-4xl font-bold my-8">Booths</h1>
+    <div class="flex flex-col gap-12 mb-12">
+      {
+        booths.map((booth) => (
+          <BoothCard
+            title={booth.data.title}
+            organizer={booth.data.organizer}
+            slug={booth.id}
+          />
+        ))
+      }
+    </div>
+  </main>
+</Layout>

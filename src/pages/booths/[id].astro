@@ -1,0 +1,43 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import OrganizerCard from "../../components/OrganizerCard.astro";
+
+export async function getStaticPaths() {
+  const booths = await getCollection("booths");
+  return booths.map((booth) => ({
+    params: { id: booth.id },
+    props: { booth },
+  }));
+}
+
+const { booth } = Astro.props;
+const entry = await getEntry("booths", booth.id);
+if (!entry) {
+  throw new Error(`Booth not found: ${booth.id}`);
+}
+const { Content } = await render(entry);
+
+---
+
+<Layout title={booth.data.title}>
+  <section class="flex flex-col gap-2 md:gap-4">
+    <section>
+      <h1 class="text-4xl font-bold mb-8">
+        {booth.data.title}
+      </h1>
+      <div class="prose w-full max-w-none">
+        <Content />
+      </div>
+    </section>
+    <section>
+      <h2 class="text-xl font-bold mt-4">オーガナイザー</h2>
+      <OrganizerCard
+        name={booth.data.organizer.name}
+        avatar={booth.data.organizer.avatar}
+        organization={booth.data.organizer.organization}
+        profile={booth.data.organizer.profile}
+      />
+    </section>
+  </section>
+</Layout>
