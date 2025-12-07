@@ -2,6 +2,7 @@
 title: "DIYハンコンのデモ"
 organizer:
   name: "NoboNobo"
+  avatar: "https://github.com/nobonobo.png"
   organization: "（株）スイッチサイエンス"
   profile: "メカトロソフトエンジニア"
 ---
