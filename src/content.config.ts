@@ -36,4 +36,17 @@ const posts = defineCollection({
   loader: glob({ pattern: "*.md", base: "src/data/posts" }),
 });
 
-export const collections = { staff, workshops, posts };
+const booths = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    organizer: z.object({
+      name: z.string(),
+      avatar: z.string().optional(),
+      organization: z.string().optional(),
+      profile: z.string(),
+    }),
+  }),
+  loader: glob({ pattern: "*.md", base: "src/data/booths" }),
+});
+
+export const collections = { staff, workshops, posts, booths };
