@@ -1,6 +1,12 @@
 // スケジュールデータ
 const scheduleItems: ScheduleItem[] = [
   {
+    startTime: "9:30",
+    endTime: "10:00",
+    title: "開場",
+    fullspan: true,
+  },
+  {
     startTime: "10:00",
     endTime: "10:30",
     title: "オープニング",
@@ -173,8 +179,10 @@ const booths = [
   "ブースC",
 ] as const;
 
-// 10:00から18:00までの15分間隔の時間スロット
+// 9:30から18:00までの15分間隔の時間スロット
 const timeSlots = [
+  "9:30",
+  "9:45",
   "10:00",
   "10:15",
   "10:30",
