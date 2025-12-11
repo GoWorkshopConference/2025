@@ -89,8 +89,15 @@ const posts = (await getCollection("posts"))
         <section class="my-12 flex flex-col items-center">
           <h2 class="text-2xl font-bold mb-6 text-center">開催概要</h2>
           <dl class="text-center">
-            <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日</dt>
-            <dd class="mb-8 text-lg">2025/12/13（土）</dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日時</dt>
+            <dd class="mb-8 text-lg">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <span>2025/12/13（土） 10:00〜18:00</span>
+                <span class="text-gray-600"
+                  >会場には<strong>9:30</strong>から入場できます</span
+                >
+              </div>
+            </dd>
             <dt class="mb-2 text-xl text-gray-600 font-semibold">会場</dt>
             <dd class="mb-8 text-lg">
               <a
