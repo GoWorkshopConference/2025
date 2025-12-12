@@ -5,7 +5,7 @@ import { glob } from "astro/loaders";
 const staff = defineCollection({
   schema: z.object({
     name: z.string(),
-    avatar: z.string().url().optional(),
+    avatar: z.string().optional(),
     link: z.string().url(),
     organization: z.string().optional(),
     type: z.enum(["core", "day"]).optional().default("core"),
