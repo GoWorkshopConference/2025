@@ -1,9 +1,19 @@
 ---
 import { withBase } from "../utils/withBase";
 
-const { name, avatar, link, organization } = Astro.props;
+const { name, avatar: _avatar, link, organization } = Astro.props;
 
 const defaultAvatar = withBase("/default_avatar.svg");
+
+const avatar = (() => {
+  if (!_avatar) {
+    return defaultAvatar;
+  }
+  if (_avatar.startsWith("http")) {
+    return _avatar;
+  }
+  return withBase(`avatars/${_avatar}`);
+})();
 ---
 
 <a
