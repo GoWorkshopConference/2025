@@ -110,55 +110,75 @@ const posts = (await getCollection("posts"))
               <br />
               〒651-0082 兵庫県神戸市中央区小野浜町 1-4
             </dd>
-            <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
-            <dd class="mb-8 text-lg">
-              無料（一部のワークショップでは材料費をいただきます）
-            </dd>
-            <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">
+              会場内のご案内
+            </dt>
             <dd class="mb-8 text-lg">
               <div class="flex flex-col items-center justify-center gap-2">
-                Go Workshop Conference 2025 IN KOBE実行委員会
                 <a
-                  href="https://twitter.com/gwcjp?ref_src=twsrc%5Etfw"
-                  class="twitter-follow-button"
-                  data-show-count="false">Follow @gwcjp</a
-                ><script
-                  async
-                  src="https://platform.twitter.com/widgets.js"
-                  charset="utf-8"></script>
-              </div>
-            </dd>
-            <dt class="mb-2 text-xl text-gray-600 font-semibold">共催</dt>
-            <dd class="text-lg">一般社団法人Gophers Japan</dd>
-          </dl>
-        </section>
-        {
-          /* TODO: 当日スタッフの募集開始時に以下を書き換えて表示する */
-          false && (
-            <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm">
-              <h2 class="mb-4 text-xl text-gray-600 font-semibold">
-                スタッフ募集中です！
-              </h2>
-              <div class="text-lg space-y-4">
-                <p>
-                  当日・事前準備のお手伝いをしてくださる方を募集しています。
-                  <br />
-                  イベント運営の経験は不問です。
-                  <br />
-                  興味のある方はぜひお申し込みください！
-                </p>
-                <a
-                  class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 focus:ring-2 focus:outline-none focus:ring-blue-300 hover:ring-2 hover:ring-blue-300"
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfQMTjI0kG8Xq1j4K-aBZh_o6AdT8tv8xgDcuC0NVSM47cS4g/viewform"
+                  href="https://kiito.jp/wordpress/wp-content/uploads/2017/08/floor_1f-202204.svg"
+                  target="_blank"
+                  class="text-blue-600 hover:text-blue-800 underline hover:no-underline"
                 >
-                  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent">
-                    お申し込みフォームはこちら
-                  </span>
+                  会場マップを見る
                 </a>
+                <span
+                  ><strong>「KIITOホール」、「ギャラリーA」</strong
+                  >にて開催されます。</span
+                ><span class="text-gray-600"
+                  >その他のエリアでは別のイベントが開催されていますので、立ち入りはご遠慮ください。</span
+                >
               </div>
-            </div>
-          )
-        }
+              <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
+              <dd class="mb-8 text-lg">
+                無料（一部のワークショップでは材料費をいただきます）
+              </dd>
+              <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
+              <dd class="mb-8 text-lg">
+                <div class="flex flex-col items-center justify-center gap-2">
+                  Go Workshop Conference 2025 IN KOBE実行委員会
+                  <a
+                    href="https://twitter.com/gwcjp?ref_src=twsrc%5Etfw"
+                    class="twitter-follow-button"
+                    data-show-count="false">Follow @gwcjp</a
+                  ><script
+                    async
+                    src="https://platform.twitter.com/widgets.js"
+                    charset="utf-8"></script>
+                </div>
+              </dd>
+              <dt class="mb-2 text-xl text-gray-600 font-semibold">共催</dt>
+              <dd class="text-lg">一般社団法人Gophers Japan</dd>
+            </dd>
+          </dl>
+          {
+            /* TODO: 当日スタッフの募集開始時に以下を書き換えて表示する */
+            false && (
+              <div class="text-center p-8 border border-gray-200 rounded-lg shadow-sm">
+                <h2 class="mb-4 text-xl text-gray-600 font-semibold">
+                  スタッフ募集中です！
+                </h2>
+                <div class="text-lg space-y-4">
+                  <p>
+                    当日・事前準備のお手伝いをしてくださる方を募集しています。
+                    <br />
+                    イベント運営の経験は不問です。
+                    <br />
+                    興味のある方はぜひお申し込みください！
+                  </p>
+                  <a
+                    class="inline-flex items-center justify-center p-0.5 text-sm text-gray-600 font-semibold rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 focus:ring-2 focus:outline-none focus:ring-blue-300 hover:ring-2 hover:ring-blue-300"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfQMTjI0kG8Xq1j4K-aBZh_o6AdT8tv8xgDcuC0NVSM47cS4g/viewform"
+                  >
+                    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-transparent">
+                      お申し込みフォームはこちら
+                    </span>
+                  </a>
+                </div>
+              </div>
+            )
+          }
+        </section>
       </section>
     </main>
   </div>
