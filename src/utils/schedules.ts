@@ -128,6 +128,7 @@ const scheduleItems: ScheduleItem[] = [
     endTime: "14:00",
     booth: "ブースA",
     title: "シャッフルランチ",
+    href: "https://go-workshop-conference.connpass.com/event/377823/",
   },
   /// ブースB
   {
