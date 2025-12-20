@@ -6,6 +6,7 @@ import {
   timeSlots as _timeSlots,
 } from "../utils/schedules.ts";
 import { withBase } from "../utils/withBase";
+import { isAbsoluteUrl } from "../utils/isAbsoluteUrl";
 
 /** タイムテーブルのtableを描画するためのデータ。nullは結合されたセルを表す。 */
 type TimeTable = (Cell | null)[][];
@@ -251,7 +252,7 @@ const timeTable = buildTimeTable(_scheduleItems, _booths, _timeSlots);
                       ]}
                     >
                       {cell.href ? (
-                        <a href={withBase(cell.href)} class="cell-link">
+                        <a href={isAbsoluteUrl(cell.href) ? cell.href : withBase(cell.href)} class="cell-link">
                           {cell.title}
                         </a>
                       ) : (

@@ -128,6 +128,7 @@ const scheduleItems: ScheduleItem[] = [
     endTime: "14:00",
     booth: "ブースA",
     title: "シャッフルランチ",
+    href: "https://go-workshop-conference.connpass.com/event/377823/",
   },
   /// ブースB
   {
@@ -135,11 +136,30 @@ const scheduleItems: ScheduleItem[] = [
     endTime: "17:45",
     booth: "ブースB",
     title: "ジェスチャーゲーム",
+    href: "https://x.com/gwcjp/status/1993527121483051009",
   },
   /// ブースC
-  { startTime: "10:30", endTime: "14:00", booth: "ブースC", title: "Go製のゲーム展示・ゲーム作りブース" },
-  { startTime: "14:00", endTime: "15:30", booth: "ブースC", title: "ゆるLT会" },
-  { startTime: "15:30", endTime: "17:45", booth: "ブースC", title: "Go製のゲーム展示・ゲーム作りブース" },
+  {
+    startTime: "10:30",
+    endTime: "14:00",
+    booth: "ブースC",
+    title: "Go製のゲーム展示・ゲーム作りブース",
+    href: "https://x.com/gwcjp/status/1994244316349534388",
+  },
+  {
+    startTime: "14:00",
+    endTime: "15:30",
+    booth: "ブースC",
+    title: "ゆるLT会",
+    href: "https://x.com/gwcjp/status/1993986378586313118",
+  },
+  {
+    startTime: "15:30",
+    endTime: "17:45",
+    booth: "ブースC",
+    title: "Go製のゲーム展示・ゲーム作りブース",
+    href: "https://x.com/gwcjp/status/1994244316349534388",
+  },
 
   // クロージングなど
   {
