@@ -136,6 +136,7 @@ const scheduleItems: ScheduleItem[] = [
     endTime: "17:45",
     booth: "ブースB",
     title: "ジェスチャーゲーム",
+    href: "https://x.com/gwcjp/status/1993527121483051009",
   },
   /// ブースC
   {
