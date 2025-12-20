@@ -33,22 +33,16 @@ const posts = (await getCollection("posts"))
           />
         </picture>
       </header>
-      <section class="flex flex-col items-center mb-8 p-4 gap-8">
+      <section class="flex flex-col items-center p-4 gap-8">
         <div class="text-center text-lg max-w-2xl">
           Go Workshop
           Conferenceは、みんなで手を動かしながら交流するワークショップを中心としたGo言語のイベントです。初心者から上級者まで、Go言語に関心のあるすべての方を対象としています。
         </div>
-        <section class="my-12 flex flex-col items-center">
-          <h2 class="text-2xl font-bold mb-6 text-center">開催概要</h2>
+        <section class="my-8 flex flex-col items-center">
           <dl class="text-center">
             <dt class="mb-2 text-xl text-gray-600 font-semibold">開催日時</dt>
             <dd class="mb-8 text-lg">
-              <div class="flex flex-col items-center justify-center gap-2">
-                <span>2025/12/13（土） 10:00〜18:00</span>
-                <span class="text-gray-600"
-                  >会場には<strong>9:30</strong>から入場できます</span
-                >
-              </div>
+              2025/12/13（土） 10:00〜18:00
             </dd>
             <dt class="mb-2 text-xl text-gray-600 font-semibold">会場</dt>
             <dd class="mb-8 text-lg">
@@ -62,46 +56,26 @@ const posts = (await getCollection("posts"))
               <br />
               〒651-0082 兵庫県神戸市中央区小野浜町 1-4
             </dd>
-            <dt class="mb-2 text-xl text-gray-600 font-semibold">
-              会場内のご案内
-            </dt>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
+            <dd class="mb-8 text-lg">
+              無料（一部のワークショップでは材料費をいただきます）
+            </dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
             <dd class="mb-8 text-lg">
               <div class="flex flex-col items-center justify-center gap-2">
+                Go Workshop Conference 2025 IN KOBE実行委員会
                 <a
-                  href="https://kiito.jp/wordpress/wp-content/uploads/2017/08/floor_1f-202204.svg"
-                  target="_blank"
-                  class="text-blue-600 hover:text-blue-800 underline hover:no-underline"
-                >
-                  会場マップを見る
-                </a>
-                <span
-                  ><strong>「KIITOホール」、「ギャラリーA」</strong
-                  >にて開催されます。</span
-                ><span class="text-gray-600"
-                  >その他のエリアでは別のイベントが開催されていますので、立ち入りはご遠慮ください。</span
-                >
+                  href="https://twitter.com/gwcjp?ref_src=twsrc%5Etfw"
+                  class="twitter-follow-button"
+                  data-show-count="false">Follow @gwcjp</a
+                ><script
+                  async
+                  src="https://platform.twitter.com/widgets.js"
+                  charset="utf-8"></script>
               </div>
-              <dt class="mb-2 text-xl text-gray-600 font-semibold">参加費用</dt>
-              <dd class="mb-8 text-lg">
-                無料（一部のワークショップでは材料費をいただきます）
-              </dd>
-              <dt class="mb-2 text-xl text-gray-600 font-semibold">主催</dt>
-              <dd class="mb-8 text-lg">
-                <div class="flex flex-col items-center justify-center gap-2">
-                  Go Workshop Conference 2025 IN KOBE実行委員会
-                  <a
-                    href="https://twitter.com/gwcjp?ref_src=twsrc%5Etfw"
-                    class="twitter-follow-button"
-                    data-show-count="false">Follow @gwcjp</a
-                  ><script
-                    async
-                    src="https://platform.twitter.com/widgets.js"
-                    charset="utf-8"></script>
-                </div>
-              </dd>
-              <dt class="mb-2 text-xl text-gray-600 font-semibold">共催</dt>
-              <dd class="text-lg">一般社団法人Gophers Japan</dd>
             </dd>
+            <dt class="mb-2 text-xl text-gray-600 font-semibold">共催</dt>
+            <dd class="text-lg">一般社団法人Gophers Japan</dd>
           </dl>
           {
             /* TODO: 当日スタッフの募集開始時に以下を書き換えて表示する */
@@ -131,7 +105,7 @@ const posts = (await getCollection("posts"))
             )
           }
         </section>
-        <section class="my-12">
+        <section>
           <h2 class="text-2xl font-bold mb-6 text-center">ブログ</h2>
           <div class="flex flex-col gap-8">
             {
